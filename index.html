@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" href="./src/assets/favicon/favicon.ico">
+		<link rel="icon" type="image/png" sizes="32x32" href="./src/assets/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./src/assets/favicon/favicon-16x16.png">
+		<link rel="apple-touch-icon" href="./src/assets/favicon/apple-touch-icon.png">
+
+		<title>Hero Effect</title>
+		<meta 
+			name="description"
+  			content="Hero effect using three.js and the glitchGL effect for my personal portfolio website"
+		>
+		<meta name="author" content="Dakota">
+		<meta property="og:title" content="Dakota — Front-End Developer">
+		<meta property="og:description" content="Interactive front-end experiments, glitch aesthetics, and creative UI development.">
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="Dakota — Front-End Developer">
+		<meta property="og:locale" content="en_US">
+
+		
+		<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap" rel="stylesheet"> -->
+		
+		<link rel="preload" as="image" href="./src/assets/noise.svg" type="image/svg+xml">
+		<link rel="preload" as="image" href="./src/assets/hero-bg-vid-poster.jpg" fetchpriority="high">
+		<link rel="preload" href="./src/assets/fonts/Cousine/Cousine-Regular.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="./src/assets/fonts/Cousine/Cousine-Bold.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="stylesheet" href="./src/styles/index.css">
+
+	</head>
+
+    <body>
+
+		<main>
+
+			<header class="main-header">
+				<div class="container">
+					<nav class="main-nav">
+						<ul class="main-nav-ul">
+
+							<!-- Note: I put these first in the mark up since it makes much more sense for keyboard navigators -->
+							<li class="main-nav-li">
+								<a href="#" class="nav-links ascii-on-hover" aria-label="Home">Home</a> 
+							</li>
+							<li class="main-nav-li">
+								<a href="#" class="nav-links ascii-on-hover" aria-label="About Me">About_Me</a>
+							</li>
+							<li class="main-nav-li">
+								<a href="#" class="nav-links ascii-on-hover" aria-label="Experience">Experience</a>
+							</li>
+
+							<li class="links-container">
+								<button type="button" class="links-container-btn" aria-haspopup="true" aria-expanded="false" aria-controls="social-menu">
+									<img src="./src/assets/AnimatedLogoSmall.webp" alt="" class="logo" />
+									<span class="logo-text ascii-on-hover" aria-label="Dakota">My_Links</span>
+								</button>
+							
+								<ul id="social-menu" class="social-menu" aria-label="My socials" hidden>
+									<li>
+										<a
+											class="social-link ascii-on-hover"
+											href="mailto:dakotawntzll@gmail.com"
+											aria-label="Send me an email"
+										>Email_Me</a>
+									</li>
+									<li>
+										<a  
+											class="social-link ascii-on-hover" 
+											href="https://www.linkedin.com/in/dakota-wentzell/" 
+											target="_blank" 
+											rel="noopener noreferrer" 
+											aria-label="Link to My LinkedIn"
+										>LinkedIn</a>
+									</li>
+									<li>
+										<a  
+											class="social-link ascii-on-hover" 
+											href="https://codepen.io/ddubs52" 
+											target="_blank" 
+											rel="noopener noreferrer" 
+											aria-label="Link to My CodePen"
+										>CodePen</a>
+									</li>
+									<li>
+										<a  
+											class="social-link ascii-on-hover" 
+											href="https://www.github.com/dakotawntzll" 
+											target="_blank" 
+											rel="noopener noreferrer" 
+											aria-label="Link to My Github"
+										>GitHub</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			
+			<section class="hero">
+
+				<div class="container">
+					<div class="hero-text-container fade-in">
+						<h1 
+							class="hero-text hero-text-title ascii-on-hover ascii-on-fade" 
+							aria-label="My name is Dakota"
+						>My name is Dakota</h1>
+						<p 
+							class="hero-text hero-text-subtitle"
+							aria-label="I'm a front-end developer"
+						>I'm a <span class="hero-text-inverse ascii-on-hover ascii-on-fade">front-end developer</span></p>
+					</div> 
+				</div>
+				
+				<div class="glitch-placeholder-container" aria-hidden="true">
+					<img
+						class="glitch-placeholder"
+						src="./src/assets/hero-bg-vid-poster.jpg"
+						alt=""
+						aria-hidden="true"
+					/>
+				</div>
+
+				<div class="glitched-asset-container" aria-hidden="true">
+					<video class="glitched-asset glitchGL" id="glitched-asset"
+						autoplay 
+						loop 
+						muted 
+						playsinline
+					>
+						<source src="./src/assets/hero-bg-vid-small-square.mp4" type="video/mp4">
+					</video>
+				</div>
+
+			</section>
+
+		</main>
+
+		<script src="./src/js/asciiShift.js"></script>
+        <script src="./src/js/index.js"></script>
+    </body>
+</html>
