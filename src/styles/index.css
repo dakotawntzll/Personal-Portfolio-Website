@@ -278,11 +278,9 @@ main {
 	flex-direction: row;
 	justify-content: flex-end;
 	align-items: center;
-	gap: 2em;
+	gap: 1.5em;
 	text-decoration: none;
 }
-
-
 
 .links-container {
 	position: relative;
@@ -301,6 +299,8 @@ main {
 	border: 0;
 	padding: 0;
 	margin: 0;
+	margin-left: -0.85em; /* This is to make the logo appear on the edge*/
+
 
 	cursor: pointer;
 }
@@ -310,7 +310,7 @@ main {
 	height: 3.5rem;
 	width: 3.5rem;
 	object-fit: cover;
-	margin-left: -0.85em;
+	/* margin-left: -0.85em; */
 
 	transform-origin: 50% 50%;
 	will-change: transform;
@@ -368,6 +368,7 @@ main {
 	text-decoration: none;
 	text-shadow: 0 0 2px black;
 	white-space: nowrap;
+	font-size: 1.125rem;
 }
 
 
@@ -569,7 +570,7 @@ main {
 @media (max-width: 40rem) {
 
 	.container {
-		width: 90%;
+		width: 92%;
 	}
 
 	.main-header{
@@ -577,11 +578,15 @@ main {
 	}
 
 	.nav-links{
-		font-size: 0.85rem;
+		font-size: 0.75rem;
 	}
 
 	.main-nav-ul{
-		gap: 1.5em;
+		gap: 1.15em;
+	}
+
+	.links-container-btn {
+		margin-left: -0.365em; /* This is to make the logo appear on the edge*/
 	}
 
 	.logo-text{
@@ -589,14 +594,15 @@ main {
 	}
 
 	.logo{
-		width: 3rem;
-		height: 3rem;
+		width: 2rem;
+		height: 2rem;
 		object-fit: cover;
-		margin-left: -0.365em;
+		/* margin-left: -0.365em; */
 	}
 
 	.social-link {
-		padding: 0.5rem 0.9rem;
+		padding: 0.35rem 0.75rem;
+		font-size: 0.75rem;
 	}
 
 	.hero-text-container{
