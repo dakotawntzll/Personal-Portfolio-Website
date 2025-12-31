@@ -172,15 +172,11 @@ body {
 
 =============================================================================================== */
 
-.nav-links,
-.logo-text,
-.social-links-dropdown-container-btn{
+.logo-text{
 	color: var(--nav-link-color);
 	text-decoration: none;
 	cursor: pointer;
-	font-size: 1rem;
-	padding: 0.4em 0.8em;
-	margin: 0 -0.8em; /* Need the horizontal margin to the inverse of padding so edges line up  */
+	font-size: 0.9rem;
 	font-weight: 400;
 	text-shadow: 
 		0 0 2px var(--mode-opposite-color),
@@ -188,29 +184,21 @@ body {
 		0 0 10px var(--mode-color);
 }
 
-.nav-links:hover,
-.nav-links:focus{
-	background-color: var(--mode-opposite-color);
-	color: var(--mode-color);
-	text-shadow: none;
-	border-radius: 0;
-	outline: transparent;			
-}
-
-.social-links-dropdown-container-btn:focus,
-.social-links-dropdown-container-btn:hover > .logo-text,
-.social-links-dropdown-container-btn:focus > .logo-text{
-	outline: transparent;
-	text-decoration: underline;
-}
-
-.social-links-dropdown-container-btn:focus > img,
-.social-links-dropdown-container-btn:hover > img{
-	filter: invert(100%) hue-rotate(180deg) saturate(150%);
+.social-link,
+.nav-link {
+	display: block;
+	padding: 0.35rem 0.75rem;
+	font-size: 0.9rem;
+	color: var(--nav-link-color);
+	text-decoration: none;
+	text-shadow: 0 0 2px black;
+	white-space: nowrap;
 }
 
 .social-link:hover,
-.social-link:focus {
+.social-link:focus,
+.nav-link:hover,
+.nav-link:focus {
 	background-color: var(--mode-opposite-color);
 	color: var(--mode-color);
 	text-shadow: none;
@@ -227,12 +215,12 @@ body {
 }
 
 .hero-text-title {
-	font-size: 2.5rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 }
 
 .hero-text-subtitle {
-	font-size: 1.25rem;
+	font-size: 0.8rem;
 	font-weight: 400;
 	width: 100%;
 	text-align: right;
@@ -259,8 +247,8 @@ main {
 }
 
 .container {
-	width: 80%;
-	max-width: 1200px;
+	width: 90%;
+	max-width: 1100px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -280,8 +268,7 @@ main {
 	position: fixed;
 	width: 100vw;
 	background: var(--header-gradient);
-	/* background-color: rgb(0, 19, 35); */
-	padding: 0.75em 0;
+	padding: 0.5em 0;
 	z-index: 10;
 }
 
@@ -294,7 +281,6 @@ main {
 }
 
 .main-nav-ul,
-.nav-menu,
 .nav-links-dropdown-container{
 	list-style: none;
 	display: flex;
@@ -307,61 +293,81 @@ main {
 
 .main-nav-ul{
 	justify-content: space-between;
+	gap: 1.15em;
 }
 
 /* ================================					
-		Nav Links
+		Nav / Social Dropdowns
 ================================*/
 
-.nav-links-dropdown-container-btn,
-.social-links-dropdown-container-btn{
-	background: transparent;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	cursor: pointer;
-}
-
 .nav-icon{
-	height: 1.5rem;
-	width: 1.5rem;
+	height: 1.55rem;
+	width: 1.55rem;
 	object-fit: cover;
 	fill: var(--mode-opposite-color)
 }
 
-.nav-links-dropdown-container-btn{
-	display: flex;
+.logo {
+	display: block;
+	width: 2.5rem;
+	height: 2.5rem;
+	object-fit: cover;
+
+	transform-origin: 50% 50%;
+	will-change: transform;
 }
 
-/* ================================					
-		Social Links
-================================*/
 
-.social-links-dropdown-container {
+.social-links-dropdown-container,
+.nav-links-dropdown-container {
 	position: relative;
 	list-style: none;
-	/* margin-right: auto; */
+}
+
+.social-links-dropdown-container{
 	order: -1;
 }
 
-.social-links-dropdown-container-btn{
+.social-links-dropdown-container-btn,
+.nav-links-dropdown-container-btn{
+	background: transparent;
+	border: 0;
+	margin: 0;
+	cursor: pointer;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 0.5em;
-
-	margin-left: -0.85em; /* This is to make the logo appear on the edge*/
 }
 
-.logo {
-	display: block;
-	height: 3.5rem;
-	width: 3.5rem;
-	object-fit: cover;
-	/* margin-left: -0.85em; */
+.nav-links-dropdown-container-btn{
+	padding: 0.5em;
+	margin-right: -0.5em; /* This is to make the btn appear on the edge*/
+}
 
-	transform-origin: 50% 50%;
-	will-change: transform;
+.social-links-dropdown-container-btn {
+	margin-left: -0.365em; /* This is to make the logo appear on the edge*/
+	padding: 0.1em 0;
+}
+
+.social-links-dropdown-container-btn:focus,
+.nav-links-dropdown-container-btn:focus,
+.social-links-dropdown-container-btn:hover > .logo-text,
+.social-links-dropdown-container-btn:focus > .logo-text{
+	outline: transparent;
+	text-decoration: underline;
+}
+
+.social-links-dropdown-container-btn:focus > img,
+.social-links-dropdown-container-btn:hover > img{
+	filter: invert(100%) hue-rotate(180deg) saturate(150%);
+}
+
+.nav-links-dropdown-container-btn:focus > .nav-icon,
+.nav-links-dropdown-container-btn:hover > .nav-icon{
+	stroke: var(--mode-opposite-color);
+	stroke-width: 2px;
+	fill: var(--mode-color);
 }
 
 .social-links-dropdown-container-btn .logo {
@@ -383,14 +389,16 @@ main {
 	animation-delay: 800ms;
 }
 
-.social-menu {
+.social-menu,
+.nav-menu {
 	position: absolute;
 	top: calc(100%);
-	left: -0.225em;
 
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
+
+	min-width: 7rem;
 
 	padding: 0.5rem 0.5rem;
 	margin: 0;
@@ -398,7 +406,7 @@ main {
 	list-style: none;
 
 	background: var(--background-gradient);
-	border: 1px solid var(--mode-opposite-color);
+	border: 2px solid var(--mode-opposite-color);
 
 	opacity: 0;
 	transform: translateY(-6px);
@@ -408,14 +416,13 @@ main {
 	z-index: 50;
 }
 
-.social-link {
-	display: block;
-	padding: 0.5rem 1.45rem;
-	color: var(--nav-link-color);
-	text-decoration: none;
-	text-shadow: 0 0 2px black;
-	white-space: nowrap;
-	font-size: 1.125rem;
+.nav-menu{
+	right: 0;
+	text-align: right;
+}
+
+.social-menu{
+	left: 0;
 }
 
 /* ================================					
@@ -486,24 +493,25 @@ main {
 	justify-content: center;
 	gap: 0.2rem;
 	text-align: left;
-	padding: 0.3rem 0.75rem;
 
+	padding: 0.1rem 0.3rem;
+	
 	background: var(--hero-text-bg);
 	background: var(--hero-text-gradient);
 	
 	mix-blend-mode: screen;
-
-	border-right: 5px solid rgb(127, 127, 127);
-	border-bottom: 5px solid rgb(74, 74, 74);
+	
 	box-shadow: -5px 5px #2a2a2a;
+	border-right: 3px solid rgb(127, 127, 127);
+	border-bottom: 3px solid rgb(74, 74, 74);
 }
 
 .hero-text-container::after{
 	content: "";
 	position: absolute;
 	z-index: 3;
-	top: -0.5rem;
-	right: 0.35rem;
+	top: -0.25rem;
+	right: 0.25rem;
 	width: 81.5%;
 	height: 100%;
 	background-color: rgb(255, 255, 255);
@@ -575,19 +583,15 @@ main {
 	transform: translateY(0);
 }
 
-.social-links-dropdown-container.is-open:focus-within > .social-menu{
+.social-links-dropdown-container.is-open:focus-within > .social-menu,
+.nav-links-dropdown-container.is-open:focus-within > .nav-menu{
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
 }
 
-/* .social-links-dropdown-container:hover>.social-menu {
-	opacity: 1;
-	transform: translateY(0);
-	pointer-events: auto;
-} */
-
-.social-links-dropdown-container.is-open>.social-menu {
+.social-links-dropdown-container.is-open > .social-menu,
+.nav-links-dropdown-container.is-open > .nav-menu {
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
@@ -613,6 +617,16 @@ main {
 	to   { transform: rotate(1080deg); }
 }
 
+/* show dropdown when hovering/focusing within the container */
+.nav-links-dropdown-container:hover .nav-menu,
+.nav-links-dropdown-container:focus-within .nav-menu,
+.nav-links-dropdown-container.is-open .nav-menu{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
 /* ===============================================================================================
 											
 											Media Queries
@@ -620,62 +634,106 @@ main {
 =============================================================================================== */
 
 
-@media (max-width: 40rem) {
+@media (min-width: 40rem) {
 
 	.container {
-		width: 92%;
+		width: 85%;
 	}
 
 	.main-header{
-		padding: 0.5em 0;
+		padding: 0.75em 0;
 	}
-
-	.nav-links{
-		font-size: 0.75rem;
-	}
-
+	
 	.main-nav-ul{
-		gap: 1.15em;
+		gap: 1.5em;
 	}
 
-	.social-links-dropdown-container-btn {
-		margin-left: -0.365em; /* This is to make the logo appear on the edge*/
-	}
-
+	.nav-link,
 	.logo-text{
+		font-size: 1rem;
+	}
+	
+	.logo-text{
+		display: inline;
+	}
+
+	.nav-link{
+		display: flex;
+		color: var(--nav-link-color);
+		cursor: pointer;
+		padding: 0.4em 0.8em;
+		margin: 0 -0.8em; /* Need the horizontal margin to the inverse of padding so edges line up  */
+		font-weight: 400;
+		text-shadow: 
+			0 0 2px var(--mode-opposite-color),
+			0 0 5px var(--mode-color),
+			0 0 10px var(--mode-color);
+	}
+
+	.nav-link:hover,
+	.nav-link:focus{
+		background-color: var(--mode-opposite-color);
+		color: var(--mode-color);
+		text-shadow: none;
+		border-radius: 0;
+		outline: transparent;			
+	}
+
+	.nav-menu{
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1.5em;
+		position: static;     
+		opacity: 1;
+		transform: none;
+		pointer-events: auto;
+
+		background: transparent;
+		border: 0;
+    	padding: 0;
+	}
+
+	.social-menu{
+		left: -0.225em;
+	}
+
+	.nav-links-dropdown-container-btn{
 		display: none;
 	}
 
-	.logo{
-		width: 2rem;
-		height: 2rem;
-		object-fit: cover;
-		/* margin-left: -0.365em; */
+	.social-links-dropdown-container-btn {
+		margin-left: -0.85em; /* This is to make the logo appear on the edge*/
+	}
+
+	.logo {
+		height: 3.5rem;
+		width: 3.5rem;
 	}
 
 	.social-link {
-		padding: 0.35rem 0.75rem;
-		font-size: 0.75rem;
+		padding: 0.5rem 1.45rem;
+		font-size: 1.125rem;
 	}
 
 	.hero-text-container{
-		padding: 0.1rem 0.3rem;
-		border-right: 3px solid rgb(127, 127, 127);
-		border-bottom: 3px solid rgb(74, 74, 74);
+		padding: 0.3rem 0.75rem;
+		border-right: 5px solid rgb(127, 127, 127);
+		border-bottom: 5px solid rgb(74, 74, 74);
 	}
 
 	.hero-text-container::after{
-		top: -0.25rem;
-		right: 0.25rem;
+		top: -0.5rem;
+		right: 0.35rem;
 		width: 81.5%;
-		height: 100%;
 	}
 
 	.hero-text-title {
-		font-size: 1.25rem;
+		font-size: 2.5rem;
 	}
 
 	.hero-text-subtitle {
-		font-size: 0.8rem;
+		font-size: 1.25rem;
 	}
 }
