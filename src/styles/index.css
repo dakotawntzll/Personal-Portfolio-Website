@@ -1,6 +1,8 @@
-/* =================
-	Fonts
-================= */
+/* ===============================================================================================
+											
+											Fonts
+
+=============================================================================================== */
 @font-face {
 	font-family: "Cousine";
 	src: 
@@ -21,9 +23,11 @@
 	font-display: swap; 
 }
 
-/* =================
-	Colors & Variables
-================= */
+/* ===============================================================================================
+											
+											Colors & Variables
+
+=============================================================================================== */
 :root {
 	--primary: #0f421e;
 	--primary-heavy: #0F2210;
@@ -114,9 +118,11 @@
 
 
 
-/* =================
-	General Selectors
-================= */
+/* ===============================================================================================
+											
+											General Selectors
+
+=============================================================================================== */
 
 *,
 *::before,
@@ -145,7 +151,7 @@ html {
 }
 
 body {
-	min-height: 300dvh;
+	min-height: 100dvh;
 	
 	font-family: "Cousine", monospace;
 	line-height: 1.6;
@@ -160,19 +166,21 @@ body {
 	color: var(--background-color);
 }
 
-/* =================
-	Typography
-================= */
+/* ===============================================================================================
+											
+											Typography
+
+=============================================================================================== */
 
 .nav-links,
 .logo-text,
-.links-container-btn {
+.social-links-dropdown-container-btn{
 	color: var(--nav-link-color);
 	text-decoration: none;
 	cursor: pointer;
 	font-size: 1rem;
 	padding: 0.4em 0.8em;
-	margin: 0 -0.8em; 
+	margin: 0 -0.8em; /* Need the horizontal margin to the inverse of padding so edges line up  */
 	font-weight: 400;
 	text-shadow: 
 		0 0 2px var(--mode-opposite-color),
@@ -189,15 +197,15 @@ body {
 	outline: transparent;			
 }
 
-.links-container-btn:focus,
-.links-container-btn:hover > .logo-text,
-.links-container-btn:focus > .logo-text{
+.social-links-dropdown-container-btn:focus,
+.social-links-dropdown-container-btn:hover > .logo-text,
+.social-links-dropdown-container-btn:focus > .logo-text{
 	outline: transparent;
 	text-decoration: underline;
 }
 
-.links-container-btn:focus > img,
-.links-container-btn:hover > img{
+.social-links-dropdown-container-btn:focus > img,
+.social-links-dropdown-container-btn:hover > img{
 	filter: invert(100%) hue-rotate(180deg) saturate(150%);
 }
 
@@ -231,9 +239,15 @@ body {
 }
 
 
-/* =================
-	Layout
-================= */
+/* ===============================================================================================
+											
+											Layout
+
+=============================================================================================== */
+
+/* ================================					
+		General Body Classes
+================================*/
 
 main {
 	min-height: 100dvh;
@@ -253,6 +267,10 @@ main {
 	/* align-items: flex-start; */
 }
 
+/* ================================					
+		Header - General
+================================*/
+
 .main-header .container{
 	flex-direction: row;
 	align-items: center;
@@ -267,42 +285,72 @@ main {
 	z-index: 10;
 }
 
+/* ================================					
+		Nav - General
+================================*/
+
 .main-nav{
 	width: 100%;
 }
 
 .main-nav-ul,
-.nav-links{
+.nav-menu,
+.nav-links-dropdown-container{
 	list-style: none;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 	gap: 1.5em;
 	text-decoration: none;
 }
 
-.links-container {
+.main-nav-ul{
+	justify-content: space-between;
+}
+
+/* ================================					
+		Nav Links
+================================*/
+
+.nav-links-dropdown-container-btn,
+.social-links-dropdown-container-btn{
+	background: transparent;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.nav-icon{
+	height: 1.5rem;
+	width: 1.5rem;
+	object-fit: cover;
+	fill: var(--mode-opposite-color)
+}
+
+.nav-links-dropdown-container-btn{
+	display: flex;
+}
+
+/* ================================					
+		Social Links
+================================*/
+
+.social-links-dropdown-container {
 	position: relative;
 	list-style: none;
-	margin-right: auto;
+	/* margin-right: auto; */
 	order: -1;
 }
 
-.links-container-btn {
+.social-links-dropdown-container-btn{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 0.5em;
 
-	background: transparent;
-	border: 0;
-	padding: 0;
-	margin: 0;
 	margin-left: -0.85em; /* This is to make the logo appear on the edge*/
-
-
-	cursor: pointer;
 }
 
 .logo {
@@ -316,19 +364,19 @@ main {
 	will-change: transform;
 }
 
-.links-container-btn .logo {
+.social-links-dropdown-container-btn .logo {
 	animation: none;
 }
 
-.links-container-btn:hover .logo,
-.links-container-btn:active .logo {
+.social-links-dropdown-container-btn:hover .logo,
+.social-links-dropdown-container-btn:active .logo {
 	animation-name: logo-spin;
 	animation-duration: 400ms;
 	animation-timing-function: cubic-bezier(.34, .07, .65, .97);
 	animation-iteration-count: 1;
 }
 
-.links-container-btn:active .logo {
+.social-links-dropdown-container-btn:active .logo {
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	animation-duration: 550ms;
@@ -360,7 +408,6 @@ main {
 	z-index: 50;
 }
 
-
 .social-link {
 	display: block;
 	padding: 0.5rem 1.45rem;
@@ -371,6 +418,9 @@ main {
 	font-size: 1.125rem;
 }
 
+/* ================================					
+		Hero Element
+================================*/
 
 .hero {
 	position: relative;
@@ -508,9 +558,11 @@ main {
 }
 
 
-/* =================
-	Animations
-================= */
+/* ===============================================================================================
+											
+											Animations
+
+=============================================================================================== */
 
 .fade-in {
 	opacity: 0;
@@ -523,19 +575,19 @@ main {
 	transform: translateY(0);
 }
 
-.links-container.is-open:focus-within > .social-menu{
+.social-links-dropdown-container.is-open:focus-within > .social-menu{
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
 }
 
-/* .links-container:hover>.social-menu {
+/* .social-links-dropdown-container:hover>.social-menu {
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
 } */
 
-.links-container.is-open>.social-menu {
+.social-links-dropdown-container.is-open>.social-menu {
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
@@ -556,15 +608,16 @@ main {
 	}
 }
 
-
 @keyframes logo-spin{
 	from { transform: rotate(0deg); }
 	to   { transform: rotate(1080deg); }
 }
 
-/* =================
-	Media Queries
-================= */
+/* ===============================================================================================
+											
+											Media Queries
+
+=============================================================================================== */
 
 
 @media (max-width: 40rem) {
@@ -585,7 +638,7 @@ main {
 		gap: 1.15em;
 	}
 
-	.links-container-btn {
+	.social-links-dropdown-container-btn {
 		margin-left: -0.365em; /* This is to make the logo appear on the edge*/
 	}
 

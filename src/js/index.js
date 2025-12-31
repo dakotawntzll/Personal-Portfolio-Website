@@ -182,49 +182,49 @@ fadeEls.forEach((el) => fadeObserver.observe(el));
 // ---------------------- My Links dropdown ----------------------
 // ---------------------------------------------------------------
 
-const linksContainer = document.querySelector(".links-container");
-const linksContainerBtn = document.querySelector(".links-container-btn");
+const socialLinksDropdownContainer = document.querySelector(".social-links-dropdown-container");
+const socialLinksDropdownContainerBtn = document.querySelector(".social-links-dropdown-container-btn");
 const socialMenu = document.querySelector("#social-menu");
-let linksContainerOpen = false;
+let socialLinksDropdownContainerOpen = false;
 let suppressNextClickToggle = false;
 
 function setMenu(state) {
-	if (linksContainerOpen === state) return;
+	if (socialLinksDropdownContainerOpen === state) return;
 
-	linksContainer.classList.toggle("is-open", state);
-	linksContainerBtn.setAttribute("aria-expanded", state ? "true" : "false");
+	socialLinksDropdownContainer.classList.toggle("is-open", state);
+	socialLinksDropdownContainerBtn.setAttribute("aria-expanded", state ? "true" : "false");
 	socialMenu.hidden = !state;
-	linksContainerOpen = state;
+	socialLinksDropdownContainerOpen = state;
 
-	// console.log(linksContainerOpen)
+	// console.log(socialLinksDropdownContainerOpen)
 }
 
-linksContainerBtn.addEventListener("click", () => {
+socialLinksDropdownContainerBtn.addEventListener("click", () => {
 	if (suppressNextClickToggle) {
 		suppressNextClickToggle = false;
 		return;
 	}
-	setMenu(!linksContainerOpen);
+	setMenu(!socialLinksDropdownContainerOpen);
 });
 
-linksContainerBtn.addEventListener("mouseenter", () => {
-	if (!linksContainerOpen) suppressNextClickToggle = true;
+socialLinksDropdownContainerBtn.addEventListener("mouseenter", () => {
+	if (!socialLinksDropdownContainerOpen) suppressNextClickToggle = true;
 	setMenu(true);
 });
 
-linksContainer.addEventListener("mouseleave", () => {
-	if (!linksContainerOpen) return;
+socialLinksDropdownContainer.addEventListener("mouseleave", () => {
+	if (!socialLinksDropdownContainerOpen) return;
 	setMenu(false);
 	suppressNextClickToggle = false;
 });
 
-linksContainer.addEventListener("focusin", () => {
+socialLinksDropdownContainer.addEventListener("focusin", () => {
 	setMenu(true);
 });
 
-linksContainer.addEventListener("focusout", () => {
+socialLinksDropdownContainer.addEventListener("focusout", () => {
 	requestAnimationFrame(() => {
-		if (!linksContainer.contains(document.activeElement)) {
+		if (!socialLinksDropdownContainer.contains(document.activeElement)) {
 			setMenu(false);
 		}
 	});
@@ -233,7 +233,7 @@ linksContainer.addEventListener("focusout", () => {
 document.addEventListener("keydown", (e) => {
 	if (e.key === "Escape") {
 		setMenu(false);
-		// linksContainerBtn.focus(); Note: Once other elements are in, might want to adjust this.
+		// socialLinksDropdownContainerBtn.focus(); Note: Once other elements are in, might want to adjust this.
 	}
 });
 
