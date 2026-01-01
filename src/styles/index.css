@@ -151,7 +151,7 @@ html {
 }
 
 body {
-	min-height: 100dvh;
+	min-height: 300dvh;
 	
 	font-family: "Cousine", monospace;
 	line-height: 1.6;
@@ -301,8 +301,8 @@ main {
 ================================*/
 
 .nav-icon{
-	height: 1.55rem;
-	width: 1.55rem;
+	height: 1.45rem;
+	width: 1.45rem;
 	object-fit: cover;
 	fill: var(--mode-opposite-color)
 }
@@ -347,7 +347,7 @@ main {
 
 .social-links-dropdown-container-btn {
 	margin-left: -0.365em; /* This is to make the logo appear on the edge*/
-	padding: 0.1em 0;
+	padding: 0.07em 0;
 }
 
 .social-links-dropdown-container-btn:focus,
@@ -398,7 +398,7 @@ main {
 	flex-direction: column;
 	gap: 0.25rem;
 
-	min-width: 7rem;
+	min-width: 7.5rem;
 
 	padding: 0.5rem 0.5rem;
 	margin: 0;

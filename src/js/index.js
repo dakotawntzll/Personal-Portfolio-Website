@@ -242,31 +242,29 @@ document.addEventListener("keydown", (e) => {
 // -------------------------------------------------------------------
 
 const logoImg = document.querySelector(".logo");
-if (logoImg) {
-	let ticking = false;
+let ticking = false;
 
-	const updateLogoRotation = () => {
-		const scrollTop =
-			window.scrollY || document.documentElement.scrollTop;
-		const maxScroll =
-			document.documentElement.scrollHeight - window.innerHeight || 1;
+const updateLogoRotation = () => {
+	const scrollTop =
+		window.scrollY || document.documentElement.scrollTop;
+	const maxScroll =
+		document.documentElement.scrollHeight - window.innerHeight || 1;
 
-		const progress = scrollTop / maxScroll; // 0 -> 1
-		const turns = 1; // 1 = 360°, 2 = 720°, etc.
-		const deg = progress * 360 * turns;
+	const progress = scrollTop / maxScroll; // 0 -> 1
+	const turns = 1; // 1 = 360°, 2 = 720°, etc.
+	const deg = progress * 360 * turns;
 
-		logoImg.style.transform = `rotate(${deg}deg)`;
-		ticking = false;
-	};
+	logoImg.style.transform = `rotate(${deg}deg)`;
+	ticking = false;
+};
 
-	const onScroll = () => {
-		if (ticking) return;
-		ticking = true;
-		requestAnimationFrame(updateLogoRotation);
-	};
+const onScroll = () => {
+	if (ticking) return;
+	ticking = true;
+	requestAnimationFrame(updateLogoRotation);
+};
 
-	updateLogoRotation(); // set initial
-	window.addEventListener("scroll", onScroll, { passive: true });
-	window.addEventListener("resize", updateLogoRotation);
-}
+updateLogoRotation(); // set initial
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", updateLogoRotation);
 
