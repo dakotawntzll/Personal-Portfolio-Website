@@ -237,6 +237,93 @@ document.addEventListener("keydown", (e) => {
 	}
 });
 
+
+// ---------------------------------------------------------------
+// ---------------------- Nav Links dropdown ---------------------
+// ---------------------------------------------------------------
+
+const navLinksDropdownContainer = document.querySelector(".nav-links-dropdown-container");
+const navLinksDropdownContainerBtn = document.querySelector(".nav-links-dropdown-container-btn");
+const navMenu = document.querySelector("#nav-menu");
+let navLinksDropdownContainerOpen = false;
+let suppressNextNavClickToggle = false;
+
+function setNavMenu(state) {
+	if (navLinksDropdownContainerOpen === state) return;
+
+	navLinksDropdownContainer.classList.toggle("is-open", state);
+	navLinksDropdownContainerBtn.setAttribute("aria-expanded", state ? "true" : "false");
+	navMenu.hidden = !state;
+	navLinksDropdownContainerOpen = state;
+
+	// console.log(navLinksDropdownContainerOpen)
+}
+
+navLinksDropdownContainerBtn.addEventListener("click", () => {
+	if (suppressNextNavClickToggle) {
+		suppressNextNavClickToggle = false;
+		return;
+	}
+	setNavMenu(!navLinksDropdownContainerOpen);
+});
+
+navLinksDropdownContainerBtn.addEventListener("mouseenter", () => {
+	if (!navLinksDropdownContainerOpen) suppressNextNavClickToggle = true;
+	setNavMenu(true);
+});
+
+navLinksDropdownContainer.addEventListener("mouseleave", () => {
+	if (!navLinksDropdownContainerOpen) return;
+	setNavMenu(false);
+	suppressNextNavClickToggle = false;
+});
+
+navLinksDropdownContainer.addEventListener("focusin", () => {
+	setNavMenu(true);
+});
+
+navLinksDropdownContainer.addEventListener("focusout", () => {
+	requestAnimationFrame(() => {
+		if (!navLinksDropdownContainer.contains(document.activeElement)) {
+			setNavMenu(false);
+		}
+	});
+});
+
+document.addEventListener("keydown", (e) => {
+	if (e.key === "Escape") {
+		setNavMenu(false);
+		navLinksDropdownContainerBtn.focus(); 	
+	}
+});
+
+const navDesktopMQ = window.matchMedia("(min-width: 40rem)");
+
+function syncNavDropdownToViewport() {
+	if (navDesktopMQ.matches) {
+		// Desktop: menu is always visible
+		navLinksDropdownContainer.classList.remove("is-open");
+		navLinksDropdownContainerOpen = true;
+
+		navMenu.hidden = false;
+		navLinksDropdownContainerBtn.setAttribute("aria-expanded", "true");
+	} else {
+		// Mobile: start closed (JS controls open/close)
+		navLinksDropdownContainer.classList.remove("is-open");
+		navLinksDropdownContainerOpen = false;
+
+		navMenu.hidden = true;
+		navLinksDropdownContainerBtn.setAttribute("aria-expanded", "false");
+		suppressNextNavClickToggle = false;
+	}
+}
+
+// Set initial state on load
+syncNavDropdownToViewport();
+
+// Keep it correct if the user resizes / rotates
+navDesktopMQ.addEventListener("change", syncNavDropdownToViewport);
+
 // -------------------------------------------------------------------
 // ---------------------- Logo Scroll Animation ----------------------
 // -------------------------------------------------------------------

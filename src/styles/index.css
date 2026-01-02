@@ -617,15 +617,6 @@ main {
 	to   { transform: rotate(1080deg); }
 }
 
-/* show dropdown when hovering/focusing within the container */
-.nav-links-dropdown-container:hover .nav-menu,
-.nav-links-dropdown-container:focus-within .nav-menu,
-.nav-links-dropdown-container.is-open .nav-menu{
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
 
 /* ===============================================================================================
 											
