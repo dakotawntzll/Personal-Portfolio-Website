@@ -44,7 +44,7 @@
 
 	--background-gradient: 
 		conic-gradient(
-			from -180deg at left 50vh,
+			from -180deg at left 100vh,
 			oklch(19.443% 0.05179 151.459 / 0.6),
 			oklch(21.553% 0.05581 145.667 / 0.8),
 			oklch(0% 0 0 / 0.85),
@@ -94,7 +94,7 @@
 
 		--background-gradient:
 			conic-gradient(
-				from -180deg at left 50vh,
+				from -180deg at left 100vh,
 				oklch(78.758% 0.09549 153.265 / 0.6),
 				oklch(41.539% 0.11377 144.757 / 0.8),
 				oklch(97.614% 0.00011 271.152 / 0.45),
