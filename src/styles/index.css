@@ -1,6 +1,8 @@
-/* =================
-	Fonts
-================= */
+/* ===============================================================================================
+											
+											Fonts
+
+=============================================================================================== */
 @font-face {
 	font-family: "Cousine";
 	src: 
@@ -21,9 +23,11 @@
 	font-display: swap; 
 }
 
-/* =================
-	Colors & Variables
-================= */
+/* ===============================================================================================
+											
+											Colors & Variables
+
+=============================================================================================== */
 :root {
 	--primary: #0f421e;
 	--primary-heavy: #0F2210;
@@ -40,7 +44,7 @@
 
 	--background-gradient: 
 		conic-gradient(
-			from -180deg at left 50vh,
+			from -180deg at left 100vh,
 			oklch(19.443% 0.05179 151.459 / 0.6),
 			oklch(21.553% 0.05581 145.667 / 0.8),
 			oklch(0% 0 0 / 0.85),
@@ -90,7 +94,7 @@
 
 		--background-gradient:
 			conic-gradient(
-				from -180deg at left 50vh,
+				from -180deg at left 100vh,
 				oklch(78.758% 0.09549 153.265 / 0.6),
 				oklch(41.539% 0.11377 144.757 / 0.8),
 				oklch(97.614% 0.00011 271.152 / 0.45),
@@ -114,9 +118,11 @@
 
 
 
-/* =================
-	General Selectors
-================= */
+/* ===============================================================================================
+											
+											General Selectors
+
+=============================================================================================== */
 
 *,
 *::before,
@@ -160,19 +166,17 @@ body {
 	color: var(--background-color);
 }
 
-/* =================
-	Typography
-================= */
+/* ===============================================================================================
+											
+											Typography
 
-.nav-links,
-.logo-text,
-.links-container-btn {
+=============================================================================================== */
+
+.logo-text{
 	color: var(--nav-link-color);
 	text-decoration: none;
 	cursor: pointer;
-	font-size: 1rem;
-	padding: 0.4em 0.8em;
-	margin: 0 -0.8em; 
+	font-size: 0.9rem;
 	font-weight: 400;
 	text-shadow: 
 		0 0 2px var(--mode-opposite-color),
@@ -180,29 +184,21 @@ body {
 		0 0 10px var(--mode-color);
 }
 
-.nav-links:hover,
-.nav-links:focus{
-	background-color: var(--mode-opposite-color);
-	color: var(--mode-color);
-	text-shadow: none;
-	border-radius: 0;
-	outline: transparent;			
-}
-
-.links-container-btn:focus,
-.links-container-btn:hover > .logo-text,
-.links-container-btn:focus > .logo-text{
-	outline: transparent;
-	text-decoration: underline;
-}
-
-.links-container-btn:focus > img,
-.links-container-btn:hover > img{
-	filter: invert(100%) hue-rotate(180deg) saturate(150%);
+.social-link,
+.nav-link {
+	display: block;
+	padding: 0.35rem 0.75rem;
+	font-size: 0.9rem;
+	color: var(--nav-link-color);
+	text-decoration: none;
+	text-shadow: 0 0 2px black;
+	white-space: nowrap;
 }
 
 .social-link:hover,
-.social-link:focus {
+.social-link:focus,
+.nav-link:hover,
+.nav-link:focus {
 	background-color: var(--mode-opposite-color);
 	color: var(--mode-color);
 	text-shadow: none;
@@ -219,21 +215,27 @@ body {
 }
 
 .hero-text-title {
-	font-size: 2.5rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 }
 
 .hero-text-subtitle {
-	font-size: 1.25rem;
+	font-size: 0.8rem;
 	font-weight: 400;
 	width: 100%;
 	text-align: right;
 }
 
 
-/* =================
-	Layout
-================= */
+/* ===============================================================================================
+											
+											Layout
+
+=============================================================================================== */
+
+/* ================================					
+		General Body Classes
+================================*/
 
 main {
 	min-height: 100dvh;
@@ -245,13 +247,17 @@ main {
 }
 
 .container {
-	width: 80%;
-	max-width: 1200px;
+	width: 90%;
+	max-width: 1100px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	/* align-items: flex-start; */
 }
+
+/* ================================					
+		Header - General
+================================*/
 
 .main-header .container{
 	flex-direction: row;
@@ -262,87 +268,137 @@ main {
 	position: fixed;
 	width: 100vw;
 	background: var(--header-gradient);
-	/* background-color: rgb(0, 19, 35); */
-	padding: 0.75em 0;
+	padding: 0.5em 0;
 	z-index: 10;
 }
+
+/* ================================					
+		Nav - General
+================================*/
 
 .main-nav{
 	width: 100%;
 }
 
 .main-nav-ul,
-.nav-links{
+.nav-links-dropdown-container{
 	list-style: none;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 	gap: 1.5em;
 	text-decoration: none;
 }
 
-.links-container {
-	position: relative;
-	list-style: none;
-	margin-right: auto;
-	order: -1;
+.main-nav-ul{
+	justify-content: space-between;
+	gap: 1.15em;
 }
 
-.links-container-btn {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 0.5em;
+/* ================================					
+		Nav / Social Dropdowns
+================================*/
 
-	background: transparent;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	margin-left: -0.85em; /* This is to make the logo appear on the edge*/
-
-
-	cursor: pointer;
+.nav-icon{
+	height: 1.45rem;
+	width: 1.45rem;
+	object-fit: cover;
+	fill: var(--mode-opposite-color)
 }
 
 .logo {
 	display: block;
-	height: 3.5rem;
-	width: 3.5rem;
+	width: 2.5rem;
+	height: 2.5rem;
 	object-fit: cover;
-	/* margin-left: -0.85em; */
 
 	transform-origin: 50% 50%;
 	will-change: transform;
 }
 
-.links-container-btn .logo {
+
+.social-links-dropdown-container,
+.nav-links-dropdown-container {
+	position: relative;
+	list-style: none;
+}
+
+.social-links-dropdown-container{
+	order: -1;
+}
+
+.social-links-dropdown-container-btn,
+.nav-links-dropdown-container-btn{
+	background: transparent;
+	border: 0;
+	margin: 0;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.nav-links-dropdown-container-btn{
+	padding: 0.5em;
+	margin-right: -0.5em; /* This is to make the btn appear on the edge*/
+}
+
+.social-links-dropdown-container-btn {
+	margin-left: -0.365em; /* This is to make the logo appear on the edge*/
+	padding: 0.07em 0;
+}
+
+.social-links-dropdown-container-btn:focus,
+.nav-links-dropdown-container-btn:focus,
+.social-links-dropdown-container-btn:hover > .logo-text,
+.social-links-dropdown-container-btn:focus > .logo-text{
+	outline: transparent;
+	text-decoration: underline;
+}
+
+.social-links-dropdown-container-btn:focus > img,
+.social-links-dropdown-container-btn:hover > img{
+	filter: invert(100%) hue-rotate(180deg) saturate(150%);
+}
+
+.nav-links-dropdown-container-btn:focus > .nav-icon,
+.nav-links-dropdown-container-btn:hover > .nav-icon{
+	stroke: var(--mode-opposite-color);
+	stroke-width: 2px;
+	fill: var(--mode-color);
+}
+
+.social-links-dropdown-container-btn .logo {
 	animation: none;
 }
 
-.links-container-btn:hover .logo,
-.links-container-btn:active .logo {
+.social-links-dropdown-container-btn:hover .logo,
+.social-links-dropdown-container-btn:active .logo {
 	animation-name: logo-spin;
 	animation-duration: 400ms;
 	animation-timing-function: cubic-bezier(.34, .07, .65, .97);
 	animation-iteration-count: 1;
 }
 
-.links-container-btn:active .logo {
+.social-links-dropdown-container-btn:active .logo {
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	animation-duration: 550ms;
 	animation-delay: 800ms;
 }
 
-.social-menu {
+.social-menu,
+.nav-menu {
 	position: absolute;
 	top: calc(100%);
-	left: -0.225em;
 
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
+
+	min-width: 7.5rem;
 
 	padding: 0.5rem 0.5rem;
 	margin: 0;
@@ -350,7 +406,7 @@ main {
 	list-style: none;
 
 	background: var(--background-gradient);
-	border: 1px solid var(--mode-opposite-color);
+	border: 2px solid var(--mode-opposite-color);
 
 	opacity: 0;
 	transform: translateY(-6px);
@@ -360,17 +416,18 @@ main {
 	z-index: 50;
 }
 
-
-.social-link {
-	display: block;
-	padding: 0.5rem 1.45rem;
-	color: var(--nav-link-color);
-	text-decoration: none;
-	text-shadow: 0 0 2px black;
-	white-space: nowrap;
-	font-size: 1.125rem;
+.nav-menu{
+	right: 0;
+	text-align: right;
 }
 
+.social-menu{
+	left: 0;
+}
+
+/* ================================					
+		Hero Element
+================================*/
 
 .hero {
 	position: relative;
@@ -436,24 +493,25 @@ main {
 	justify-content: center;
 	gap: 0.2rem;
 	text-align: left;
-	padding: 0.3rem 0.75rem;
 
+	padding: 0.1rem 0.3rem;
+	
 	background: var(--hero-text-bg);
 	background: var(--hero-text-gradient);
 	
 	mix-blend-mode: screen;
-
-	border-right: 5px solid rgb(127, 127, 127);
-	border-bottom: 5px solid rgb(74, 74, 74);
+	
 	box-shadow: -5px 5px #2a2a2a;
+	border-right: 3px solid rgb(127, 127, 127);
+	border-bottom: 3px solid rgb(74, 74, 74);
 }
 
 .hero-text-container::after{
 	content: "";
 	position: absolute;
 	z-index: 3;
-	top: -0.5rem;
-	right: 0.35rem;
+	top: -0.25rem;
+	right: 0.25rem;
 	width: 81.5%;
 	height: 100%;
 	background-color: rgb(255, 255, 255);
@@ -508,9 +566,11 @@ main {
 }
 
 
-/* =================
-	Animations
-================= */
+/* ===============================================================================================
+											
+											Animations
+
+=============================================================================================== */
 
 .fade-in {
 	opacity: 0;
@@ -523,19 +583,15 @@ main {
 	transform: translateY(0);
 }
 
-.links-container.is-open:focus-within > .social-menu{
+.social-links-dropdown-container.is-open:focus-within > .social-menu,
+.nav-links-dropdown-container.is-open:focus-within > .nav-menu{
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
 }
 
-/* .links-container:hover>.social-menu {
-	opacity: 1;
-	transform: translateY(0);
-	pointer-events: auto;
-} */
-
-.links-container.is-open>.social-menu {
+.social-links-dropdown-container.is-open > .social-menu,
+.nav-links-dropdown-container.is-open > .nav-menu {
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
@@ -556,73 +612,119 @@ main {
 	}
 }
 
-
 @keyframes logo-spin{
 	from { transform: rotate(0deg); }
 	to   { transform: rotate(1080deg); }
 }
 
-/* =================
-	Media Queries
-================= */
+
+/* ===============================================================================================
+											
+											Media Queries
+
+=============================================================================================== */
 
 
-@media (max-width: 40rem) {
+@media (min-width: 40rem) {
 
 	.container {
-		width: 92%;
+		width: 85%;
 	}
 
 	.main-header{
-		padding: 0.5em 0;
+		padding: 0.75em 0;
 	}
-
-	.nav-links{
-		font-size: 0.75rem;
-	}
-
+	
 	.main-nav-ul{
-		gap: 1.15em;
+		gap: 1.5em;
 	}
 
-	.links-container-btn {
-		margin-left: -0.365em; /* This is to make the logo appear on the edge*/
-	}
-
+	.nav-link,
 	.logo-text{
+		font-size: 1rem;
+	}
+	
+	.logo-text{
+		display: inline;
+	}
+
+	.nav-link{
+		display: flex;
+		color: var(--nav-link-color);
+		cursor: pointer;
+		padding: 0.4em 0.8em;
+		margin: 0 -0.8em; /* Need the horizontal margin to the inverse of padding so edges line up  */
+		font-weight: 400;
+		text-shadow: 
+			0 0 2px var(--mode-opposite-color),
+			0 0 5px var(--mode-color),
+			0 0 10px var(--mode-color);
+	}
+
+	.nav-link:hover,
+	.nav-link:focus{
+		background-color: var(--mode-opposite-color);
+		color: var(--mode-color);
+		text-shadow: none;
+		border-radius: 0;
+		outline: transparent;			
+	}
+
+	.nav-menu{
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 1.5em;
+		position: static;     
+		opacity: 1;
+		transform: none;
+		pointer-events: auto;
+
+		background: transparent;
+		border: 0;
+    	padding: 0;
+	}
+
+	.social-menu{
+		left: -0.225em;
+	}
+
+	.nav-links-dropdown-container-btn{
 		display: none;
 	}
 
-	.logo{
-		width: 2rem;
-		height: 2rem;
-		object-fit: cover;
-		/* margin-left: -0.365em; */
+	.social-links-dropdown-container-btn {
+		margin-left: -0.85em; /* This is to make the logo appear on the edge*/
+	}
+
+	.logo {
+		height: 3.5rem;
+		width: 3.5rem;
 	}
 
 	.social-link {
-		padding: 0.35rem 0.75rem;
-		font-size: 0.75rem;
+		padding: 0.5rem 1.45rem;
+		font-size: 1.125rem;
 	}
 
 	.hero-text-container{
-		padding: 0.1rem 0.3rem;
-		border-right: 3px solid rgb(127, 127, 127);
-		border-bottom: 3px solid rgb(74, 74, 74);
+		padding: 0.3rem 0.75rem;
+		border-right: 5px solid rgb(127, 127, 127);
+		border-bottom: 5px solid rgb(74, 74, 74);
 	}
 
 	.hero-text-container::after{
-		top: -0.25rem;
-		right: 0.25rem;
+		top: -0.5rem;
+		right: 0.35rem;
 		width: 81.5%;
-		height: 100%;
 	}
 
 	.hero-text-title {
-		font-size: 1.25rem;
+		font-size: 2.5rem;
 	}
 
 	.hero-text-subtitle {
-		font-size: 0.8rem;
+		font-size: 1.25rem;
 	}
 }

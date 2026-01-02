@@ -182,49 +182,49 @@ fadeEls.forEach((el) => fadeObserver.observe(el));
 // ---------------------- My Links dropdown ----------------------
 // ---------------------------------------------------------------
 
-const linksContainer = document.querySelector(".links-container");
-const linksContainerBtn = document.querySelector(".links-container-btn");
+const socialLinksDropdownContainer = document.querySelector(".social-links-dropdown-container");
+const socialLinksDropdownContainerBtn = document.querySelector(".social-links-dropdown-container-btn");
 const socialMenu = document.querySelector("#social-menu");
-let linksContainerOpen = false;
+let socialLinksDropdownContainerOpen = false;
 let suppressNextClickToggle = false;
 
 function setMenu(state) {
-	if (linksContainerOpen === state) return;
+	if (socialLinksDropdownContainerOpen === state) return;
 
-	linksContainer.classList.toggle("is-open", state);
-	linksContainerBtn.setAttribute("aria-expanded", state ? "true" : "false");
+	socialLinksDropdownContainer.classList.toggle("is-open", state);
+	socialLinksDropdownContainerBtn.setAttribute("aria-expanded", state ? "true" : "false");
 	socialMenu.hidden = !state;
-	linksContainerOpen = state;
+	socialLinksDropdownContainerOpen = state;
 
-	// console.log(linksContainerOpen)
+	// console.log(socialLinksDropdownContainerOpen)
 }
 
-linksContainerBtn.addEventListener("click", () => {
+socialLinksDropdownContainerBtn.addEventListener("click", () => {
 	if (suppressNextClickToggle) {
 		suppressNextClickToggle = false;
 		return;
 	}
-	setMenu(!linksContainerOpen);
+	setMenu(!socialLinksDropdownContainerOpen);
 });
 
-linksContainerBtn.addEventListener("mouseenter", () => {
-	if (!linksContainerOpen) suppressNextClickToggle = true;
+socialLinksDropdownContainerBtn.addEventListener("mouseenter", () => {
+	if (!socialLinksDropdownContainerOpen) suppressNextClickToggle = true;
 	setMenu(true);
 });
 
-linksContainer.addEventListener("mouseleave", () => {
-	if (!linksContainerOpen) return;
+socialLinksDropdownContainer.addEventListener("mouseleave", () => {
+	if (!socialLinksDropdownContainerOpen) return;
 	setMenu(false);
 	suppressNextClickToggle = false;
 });
 
-linksContainer.addEventListener("focusin", () => {
+socialLinksDropdownContainer.addEventListener("focusin", () => {
 	setMenu(true);
 });
 
-linksContainer.addEventListener("focusout", () => {
+socialLinksDropdownContainer.addEventListener("focusout", () => {
 	requestAnimationFrame(() => {
-		if (!linksContainer.contains(document.activeElement)) {
+		if (!socialLinksDropdownContainer.contains(document.activeElement)) {
 			setMenu(false);
 		}
 	});
@@ -233,40 +233,125 @@ linksContainer.addEventListener("focusout", () => {
 document.addEventListener("keydown", (e) => {
 	if (e.key === "Escape") {
 		setMenu(false);
-		// linksContainerBtn.focus(); Note: Once other elements are in, might want to adjust this.
+		// socialLinksDropdownContainerBtn.focus(); Note: Once other elements are in, might want to adjust this.
 	}
 });
+
+
+// ---------------------------------------------------------------
+// ---------------------- Nav Links dropdown ---------------------
+// ---------------------------------------------------------------
+
+const navLinksDropdownContainer = document.querySelector(".nav-links-dropdown-container");
+const navLinksDropdownContainerBtn = document.querySelector(".nav-links-dropdown-container-btn");
+const navMenu = document.querySelector("#nav-menu");
+let navLinksDropdownContainerOpen = false;
+let suppressNextNavClickToggle = false;
+
+function setNavMenu(state) {
+	if (navLinksDropdownContainerOpen === state) return;
+
+	navLinksDropdownContainer.classList.toggle("is-open", state);
+	navLinksDropdownContainerBtn.setAttribute("aria-expanded", state ? "true" : "false");
+	navMenu.hidden = !state;
+	navLinksDropdownContainerOpen = state;
+
+	// console.log(navLinksDropdownContainerOpen)
+}
+
+navLinksDropdownContainerBtn.addEventListener("click", () => {
+	if (suppressNextNavClickToggle) {
+		suppressNextNavClickToggle = false;
+		return;
+	}
+	setNavMenu(!navLinksDropdownContainerOpen);
+});
+
+navLinksDropdownContainerBtn.addEventListener("mouseenter", () => {
+	if (!navLinksDropdownContainerOpen) suppressNextNavClickToggle = true;
+	setNavMenu(true);
+});
+
+navLinksDropdownContainer.addEventListener("mouseleave", () => {
+	if (!navLinksDropdownContainerOpen) return;
+	setNavMenu(false);
+	suppressNextNavClickToggle = false;
+});
+
+navLinksDropdownContainer.addEventListener("focusin", () => {
+	setNavMenu(true);
+});
+
+navLinksDropdownContainer.addEventListener("focusout", () => {
+	requestAnimationFrame(() => {
+		if (!navLinksDropdownContainer.contains(document.activeElement)) {
+			setNavMenu(false);
+		}
+	});
+});
+
+document.addEventListener("keydown", (e) => {
+	if (e.key === "Escape") {
+		setNavMenu(false);
+		navLinksDropdownContainerBtn.focus(); 	
+	}
+});
+
+const navDesktopMQ = window.matchMedia("(min-width: 40rem)");
+
+function syncNavDropdownToViewport() {
+	if (navDesktopMQ.matches) {
+		// Desktop: menu is always visible
+		navLinksDropdownContainer.classList.remove("is-open");
+		navLinksDropdownContainerOpen = true;
+
+		navMenu.hidden = false;
+		navLinksDropdownContainerBtn.setAttribute("aria-expanded", "true");
+	} else {
+		// Mobile: start closed (JS controls open/close)
+		navLinksDropdownContainer.classList.remove("is-open");
+		navLinksDropdownContainerOpen = false;
+
+		navMenu.hidden = true;
+		navLinksDropdownContainerBtn.setAttribute("aria-expanded", "false");
+		suppressNextNavClickToggle = false;
+	}
+}
+
+// Set initial state on load
+syncNavDropdownToViewport();
+
+// Keep it correct if the user resizes / rotates
+navDesktopMQ.addEventListener("change", syncNavDropdownToViewport);
 
 // -------------------------------------------------------------------
 // ---------------------- Logo Scroll Animation ----------------------
 // -------------------------------------------------------------------
 
 const logoImg = document.querySelector(".logo");
-if (logoImg) {
-	let ticking = false;
+let ticking = false;
 
-	const updateLogoRotation = () => {
-		const scrollTop =
-			window.scrollY || document.documentElement.scrollTop;
-		const maxScroll =
-			document.documentElement.scrollHeight - window.innerHeight || 1;
+const updateLogoRotation = () => {
+	const scrollTop =
+		window.scrollY || document.documentElement.scrollTop;
+	const maxScroll =
+		document.documentElement.scrollHeight - window.innerHeight || 1;
 
-		const progress = scrollTop / maxScroll; // 0 -> 1
-		const turns = 1; // 1 = 360°, 2 = 720°, etc.
-		const deg = progress * 360 * turns;
+	const progress = scrollTop / maxScroll; // 0 -> 1
+	const turns = 1; // 1 = 360°, 2 = 720°, etc.
+	const deg = progress * 360 * turns;
 
-		logoImg.style.transform = `rotate(${deg}deg)`;
-		ticking = false;
-	};
+	logoImg.style.transform = `rotate(${deg}deg)`;
+	ticking = false;
+};
 
-	const onScroll = () => {
-		if (ticking) return;
-		ticking = true;
-		requestAnimationFrame(updateLogoRotation);
-	};
+const onScroll = () => {
+	if (ticking) return;
+	ticking = true;
+	requestAnimationFrame(updateLogoRotation);
+};
 
-	updateLogoRotation(); // set initial
-	window.addEventListener("scroll", onScroll, { passive: true });
-	window.addEventListener("resize", updateLogoRotation);
-}
+updateLogoRotation(); // set initial
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", updateLogoRotation);
 
