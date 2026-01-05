@@ -2,11 +2,12 @@
 // ---------------------- Glitch effect initialization ----------------------
 // --------------------------------------------------------------------------
 
-const initGlitch = () => {
-	const sizeCursor =
-		window.innerWidth > window.innerHeight ? "100vw" : "100vh";
+let glitchEffect = null;
 
-	glitchGL({
+const initGlitch = () => {
+	const sizeCursor = window.innerWidth > window.innerHeight ? "100vw" : "100vh";
+
+	glitchEffect = glitchGL({
 		target: ".glitchGL",
 		intensity: 4.0,
 		interaction: {
@@ -56,13 +57,13 @@ const initGlitch = () => {
 			glitch: {
 				enabled: true,
 				rgbShift: 0,
-				digitalNoise: 0.4,
+				digitalNoise: 0.3,
 				lineDisplacement: 0,
 				bitCrushDepth: 2,
-				signalDropoutFreq: 0.03,
-				signalDropoutSize: 0.4,
-				syncErrorFreq: 0.05, //0.085
-				syncErrorAmount: 0.05, //0.141
+				signalDropoutFreq: 0.0,
+				signalDropoutSize: 0.0,
+				syncErrorFreq: 0.00, //0.085
+				syncErrorAmount: 0.00, //0.141
 				interferenceSpeed: 1,
 				interferenceIntensity: 0.1,
 				frameGhostAmount: 0.68,
@@ -71,7 +72,72 @@ const initGlitch = () => {
 			},
 		},
 	});
+
+	return glitchEffect;
 };
+
+// --------------------------------------------------------------------------
+// ---------------------- Glitch effect Mouse Boost -------------------------
+// --------------------------------------------------------------------------
+
+function setupGlitchBoost() {
+	const glitchedAssetContainer = document.querySelector(".hero");
+	if (!glitchedAssetContainer) return;
+
+	function applyBoost() {
+		if (!glitchEffect) return;
+
+		glitchEffect.updateOptions({
+			intensity: 5.0,
+			effects: {
+				crt: {
+					curvature: 2.5,
+					chromaticAberration: 1,
+					brightness: 0.29,
+					phosphorGlow: 1.5,
+				},
+				glitch: {
+					datamoshStrength: 1.2,
+					rgbShift: 0.0005,
+				},
+			},
+		});
+	}
+
+	function clearBoost() {
+		if (!glitchEffect) return;
+
+		glitchEffect.updateOptions({
+			intensity: 4.0,
+			effects: {
+				crt: {
+					curvature: 3,
+					chromaticAberration: 0.7,
+					brightness: 0.27,
+					phosphorGlow: 1.25,
+				},
+				glitch: {
+					datamoshStrength: 1,
+					rgbShift: 0,
+				},
+			},
+		});
+	}
+
+	glitchedAssetContainer.addEventListener("pointerdown", (e) => {
+		glitchedAssetContainer.setPointerCapture?.(e.pointerId);
+		applyBoost();
+	});
+
+	glitchedAssetContainer.addEventListener("pointerup", (e) => {
+		glitchedAssetContainer.releasePointerCapture?.(e.pointerId);
+		clearBoost();
+	});
+
+	glitchedAssetContainer.addEventListener("pointercancel", clearBoost);
+	glitchedAssetContainer.addEventListener("pointerleave", clearBoost);
+}
+
 
 // ----------------------------------------------------------------
 // ---------------------- Lazy load section  ----------------------
@@ -139,6 +205,7 @@ runWhenIdle(async () => {
 		await whenVideoCanPlay(video);
 
 		initGlitch();
+		setupGlitchBoost();
 		setGlitchReady();
 	} catch (err) {
 		console.error(err);

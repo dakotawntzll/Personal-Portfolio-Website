@@ -266,7 +266,7 @@ main {
 
 .main-header{
 	position: fixed;
-	width: 100vw;
+	width: 100%;
 	background: var(--header-gradient);
 	padding: 0.5em 0;
 	z-index: 10;
@@ -324,9 +324,9 @@ main {
 	list-style: none;
 }
 
-.social-links-dropdown-container{
+/* .social-links-dropdown-container{
 	order: -1;
-}
+} */
 
 .social-links-dropdown-container-btn,
 .nav-links-dropdown-container-btn{
@@ -342,11 +342,11 @@ main {
 
 .nav-links-dropdown-container-btn{
 	padding: 0.5em;
-	margin-right: -0.5em; /* This is to make the btn appear on the edge*/
+	margin-left: -0.5em; /* This is to make the btn appear on the edge*/
 }
 
 .social-links-dropdown-container-btn {
-	margin-left: -0.365em; /* This is to make the logo appear on the edge*/
+	margin-right: -0.365em; /* This is to make the logo appear on the edge*/
 	padding: 0.07em 0;
 }
 
@@ -417,12 +417,12 @@ main {
 }
 
 .nav-menu{
-	right: 0;
-	text-align: right;
+	left: 0;
 }
 
 .social-menu{
-	left: 0;
+	right: 0;
+	text-align: right;
 }
 
 /* ================================					
@@ -481,6 +481,11 @@ main {
 		);
 	mask-size: 100% 100%;
 	mask-repeat: no-repeat;
+
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* IE 10+ */
+	user-select: none;  
 } 
 
 .hero-text-container{
@@ -687,7 +692,7 @@ main {
 	}
 
 	.social-menu{
-		left: -0.225em;
+		right: -0.225em;
 	}
 
 	.nav-links-dropdown-container-btn{
@@ -695,7 +700,7 @@ main {
 	}
 
 	.social-links-dropdown-container-btn {
-		margin-left: -0.85em; /* This is to make the logo appear on the edge*/
+		margin-right: -0.85em; /* This is to make the logo appear on the edge*/
 	}
 
 	.logo {
