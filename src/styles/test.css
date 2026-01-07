@@ -1,0 +1,102 @@
+.about_me_section{
+	background-color: #00000021;
+	border: 2px solid white;
+	padding: 1.25em;
+	font-size: 1rem;
+	line-height: 1.3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 100%;
+	height: 80vh;
+	margin: 110vh auto;
+
+}
+
+.section-heading{
+	font-weight: 700;
+	line-height: 1;
+	padding: 0.25em 0.4em;
+	padding-top: 0.3em;
+	background-color: white;
+	color: black;
+	position: absolute;
+	transform: translateY(-50%);
+}
+
+.section-container{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	border: 2px dashed white;
+}
+
+/* Padding Top/Bottom */
+.bio-section{
+	/* padding-top: 1rem;
+	padding-bottom: 1rem; */
+}
+
+/* Padding sides */
+.bio-section,
+.skills-section-heading,
+.contact-section-heading{
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.bio-section,
+.section-container-lower-half{
+	height: 100%;
+	width: 100%;
+}
+
+.bio-section{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+}
+
+.profile-pic{
+	width: 30%;
+	max-height: 100%;
+	object-fit: cover;
+}
+
+.bio-section-text{
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	padding-left: 1rem;
+	width: 70%;
+}
+
+.bio-section-text-heading{
+	white-space: nowrap;
+}
+
+.section-container-lower-half{
+	border-top: 2px dashed white;
+	display: flex;
+	flex-direction: row;
+}
+
+.skills-section{
+	width: 65%;
+}
+
+.contact-section{
+	border-left: 2px dashed white;
+	width: 35%;
+}
+
+.skills-section-heading,
+.contact-section-heading{
+	font-weight: 700;
+	padding-top: 0.4em; 
+	padding-bottom: 0.25rem;
+	border-bottom: 2px dashed white;
+}
