@@ -1,6 +1,6 @@
 .about_me_section{
-	background-color: #00000021;
-	border: 2px solid white;
+	background: var(--background-gradient);
+	border: 2px solid var(--mode-opposite-color);
 	padding: 1.25em;
 	font-size: 1rem;
 	line-height: 1.3;
@@ -9,9 +9,8 @@
 	align-items: center;
 
 	width: 100%;
-	height: 80vh;
-	margin: 110vh auto;
-
+	height: 75vh;
+	margin: 115vh auto;
 }
 
 .section-heading{
@@ -19,50 +18,50 @@
 	line-height: 1;
 	padding: 0.25em 0.4em;
 	padding-top: 0.3em;
-	background-color: white;
-	color: black;
+	background-color: var(--mode-opposite-color);
+	color: var(--mode-color);
 	position: absolute;
 	transform: translateY(-50%);
+	z-index: 2; 
 }
 
 .section-container{
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	border: 2px dashed white;
+	border: 2px dashed var(--mode-opposite-color);
 }
 
 /* Padding Top/Bottom */
+.skills-section-list,
+.contact-section-list,
 .bio-section{
-	/* padding-top: 1rem;
-	padding-bottom: 1rem; */
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 /* Padding sides */
 .bio-section,
 .skills-section-heading,
-.contact-section-heading{
+.contact-section-heading,
+.skills-section-list,
+.contact-section-list{
 	padding-left: 1rem;
 	padding-right: 1rem;
-}
-
-.bio-section,
-.section-container-lower-half{
-	height: 100%;
-	width: 100%;
 }
 
 .bio-section{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 100%;
+	height: 60%;
 }
 
 .profile-pic{
-	width: 30%;
-	max-height: 100%;
+	width: 20%;
+	height: 100%;
 	object-fit: cover;
 }
 
@@ -71,15 +70,22 @@
 	flex-direction: column;
 	gap: 1em;
 	padding-left: 1rem;
-	width: 70%;
+	width: 80%;
+}
+
+.bio-section-text-heading-container{
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .bio-section-text-heading{
 	white-space: nowrap;
+	font-size: 0.8rem;
 }
 
 .section-container-lower-half{
-	border-top: 2px dashed white;
+	height: 40%;
+	border-top: 2px dashed var(--mode-opposite-color);
 	display: flex;
 	flex-direction: row;
 }
@@ -89,7 +95,7 @@
 }
 
 .contact-section{
-	border-left: 2px dashed white;
+	border-left: 2px dashed var(--mode-opposite-color);
 	width: 35%;
 }
 
@@ -98,5 +104,20 @@
 	font-weight: 700;
 	padding-top: 0.4em; 
 	padding-bottom: 0.25rem;
-	border-bottom: 2px dashed white;
+	border-bottom: 2px dashed var(--mode-opposite-color);
+}
+
+.skills-section-list,
+.contact-section-list{
+	list-style-type: ">";
+}
+
+.skills-section-list-item,
+.contact-section-list-item{
+	list-style-position: inside;
+}
+
+.skills-section-list{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
