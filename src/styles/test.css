@@ -63,6 +63,7 @@
 	width: 20%;
 	height: 100%;
 	object-fit: cover;
+	background: var(--ascii-pfp-bg);
 }
 
 .bio-section-text{
@@ -80,7 +81,7 @@
 
 .bio-section-text-heading{
 	white-space: nowrap;
-	font-size: 0.8rem;
+	font-size: clamp(0.6rem, 1.5vw, 1rem);
 }
 
 .section-container-lower-half{
@@ -91,12 +92,12 @@
 }
 
 .skills-section{
-	width: 65%;
+	width: 68%;
 }
 
 .contact-section{
 	border-left: 2px dashed var(--mode-opposite-color);
-	width: 35%;
+	width: 32%;
 }
 
 .skills-section-heading,
