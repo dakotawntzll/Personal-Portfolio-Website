@@ -1,16 +1,20 @@
 .about_me_section{
-	background: var(--background-gradient);
+	/* background: var(--background-gradient); */
 	border: 2px solid var(--mode-opposite-color);
 	padding: 1.25em;
 	font-size: 1rem;
-	line-height: 1.3;
+	line-height: 1.5;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 	width: 100%;
 	height: 75vh;
-	margin: 115vh auto;
+	margin: 200vh auto 10vh;
+	position: relative;
+
+	text-shadow: var(--colored-shadow-mode);
+	
 }
 
 .section-heading{
@@ -108,17 +112,51 @@
 	border-bottom: 2px dashed var(--mode-opposite-color);
 }
 
-.skills-section-list,
-.contact-section-list{
-	list-style-type: ">";
-}
-
 .skills-section-list-item,
 .contact-section-list-item{
 	list-style-position: inside;
 }
 
+.contact-section-list-item{
+	list-style-type: ">";
+}
+
+.skills-section-list-item{
+	list-style-type: "­­­­­­­­­­­­▪­­­­­­­­";
+}
+
 .skills-section-list{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+}
+
+.contact-section-link{
+	color: inherit;
+	text-decoration: none;
+	background: inherit;
+	padding: 0.2em 0.4em;
+	margin: -0.2em -0.4em;
+}
+
+.contact-section-link:hover,
+.contact-section-link:focus{
+	/* text-decoration: underline; */
+	background-color: var(--mode-opposite-color);
+	color: var(--mode-color);
+	font-weight: 700;
+	text-shadow: var(--colored-shadow-opposite-mode);
+	border-radius: 0;
+	outline: none;
+}
+
+.contact-section-list-item:has(.contact-section-link:hover),
+.contact-section-list-item:has(.contact-section-link:focus){
+	list-style-type: "<";
+}
+
+.contact-section-list-item:has(.contact-section-link:hover)::after,
+.contact-section-list-item:has(.contact-section-link:focus)::after{
+	content:">";
+	position: absolute;
+	padding-left: 1ch;
 }

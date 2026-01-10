@@ -77,6 +77,18 @@
 			rgba(10, 11, 10, 0.035) 80%,
 			rgba(10, 11, 10, 0) 100%
 		);
+	
+	--colored-shadow-mode:
+		0 0 1px rgba(255, 255, 255, 1),
+		0 0 3px rgb(215, 240, 213, .7),
+		0 0 6px rgb(166, 215, 163, .5),
+		0 0 8px rgba(81, 156, 56, .4);
+
+	--colored-shadow-opposite-mode:
+		0 0 1px rgb(0, 0, 0),
+		0 0 3px rgba(30, 36, 28, 0.5),
+		0 0 6px rgba(46, 66, 45, 0.3),
+		0 0 8px rgba(40, 93, 22, 0.3);
 }
 
 @media (prefers-color-scheme: light) {
@@ -117,6 +129,19 @@
 				rgba(224, 232, 220, 0.035) 80%,
 				rgba(224, 232, 220, 0) 100%
 			);
+		
+		--colored-shadow-mode:
+			0 0 1px rgb(0, 0, 0),
+			0 0 3px rgba(30, 36, 28, 0.5),
+			0 0 6px rgba(46, 66, 45, 0.3),
+			0 0 8px rgba(40, 93, 22, 0.3);
+
+		--colored-shadow-opposite-mode:
+			0 0 1px rgba(255, 255, 255, 1),
+			0 0 3px rgb(215, 240, 213, .7),
+			0 0 6px rgb(166, 215, 163, .5),
+			0 0 8px rgba(81, 156, 56, .4);
+
 	}
 }
 
@@ -155,7 +180,7 @@ html {
 }
 
 body {
-	min-height: 300dvh;
+	min-height: 100dvh;
 	
 	font-family: "Cousine", monospace;
 	line-height: 1.6;
@@ -205,7 +230,7 @@ body {
 .nav-link:focus {
 	background-color: var(--mode-opposite-color);
 	color: var(--mode-color);
-	text-shadow: none;
+	text-shadow: var(--colored-shadow-opposite-mode);
 	outline: transparent;
 }
 
@@ -674,7 +699,7 @@ main {
 	.nav-link:focus{
 		background-color: var(--mode-opposite-color);
 		color: var(--mode-color);
-		text-shadow: none;
+		text-shadow: var(--colored-shadow-opposite-mode);
 		border-radius: 0;
 		outline: transparent;			
 	}
