@@ -162,7 +162,7 @@
 	margin: -0.2em calc(-0.55em + 2ch);
 }
 
-.contact-section-list-item:has(.contact-section-link:hover)
+.contact-section-list-item:has(.contact-section-link:hover),
 .contact-section-list-item:has(.contact-section-link:focus){
 	list-style-type: "< ";
 }
