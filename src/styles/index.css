@@ -177,6 +177,9 @@ html {
 	color-scheme: dark light;
 	scrollbar-width: thin;
 	scrollbar-color: var(--scrollbar-colors);
+	scroll-behavior: smooth;
+
+	scroll-snap-type: y mandatory;
 }
 
 body {
@@ -188,6 +191,7 @@ body {
 	
 	background: var(--background-color);
 	background: var(--background-gradient);
+	scroll-snap-type: inherit;
 }
 
 *::selection {
@@ -227,7 +231,8 @@ body {
 .social-link:hover,
 .social-link:focus,
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.nav-link.is-active {
 	background-color: var(--mode-opposite-color);
 	color: var(--mode-color);
 	text-shadow: var(--colored-shadow-opposite-mode);
@@ -384,7 +389,7 @@ main {
 .social-links-dropdown-container-btn:hover > .logo-text,
 .social-links-dropdown-container-btn:focus > .logo-text{
 	outline: transparent;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .social-links-dropdown-container-btn:focus > img,
@@ -651,6 +656,17 @@ main {
 	to   { transform: rotate(1080deg); }
 }
 
+/* ================================					
+		Scroll Snapping
+================================*/
+
+.hero,
+.about-me-section{
+	scroll-snap-align: start;
+	scroll-snap-stop: normal; 
+	scroll-margin-top: 5rem 0;
+}
+
 
 /* ===============================================================================================
 											
@@ -720,9 +736,6 @@ main {
     	padding: 0;
 	}
 
-	.social-menu{
-		right: -0.225em;
-	}
 
 	.nav-links-dropdown-container-btn{
 		display: none;

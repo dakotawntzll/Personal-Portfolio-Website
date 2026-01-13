@@ -422,3 +422,67 @@ updateLogoRotation(); // set initial
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", updateLogoRotation);
 
+
+
+// -------------------------------------------------------------------
+// ------------------- Section Tabbing / Active ----------------------
+// -------------------------------------------------------------------
+
+const navAnchorLinks = document.querySelectorAll('.nav-link');
+let tabNavigationMode = false;
+
+const sectionById = new Map(); // id -> section element
+const linkById = new Map();    // id -> link element
+
+// These apparently will prevent double scrolling
+// Need to test if it's even needed, but better safe than sorry
+document.addEventListener("keydown", (e) => {
+	if (e.key === "Tab") tabNavigationMode = true;
+});
+document.addEventListener("pointerdown", () => {
+	tabNavigationMode = false;
+});
+
+navAnchorLinks.forEach((link) => {
+
+	const id = link.getAttribute("href").slice(1);
+	if (!id) return;
+	const target = document.getElementById(id);
+	if (!target) return;
+	
+	sectionById.set(id, target);
+	linkById.set(id, link);
+
+	link.addEventListener("focus", () => {
+		if (!tabNavigationMode) return;
+
+		target.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	});
+});
+
+// -----------------------------------------
+//  Active Tabs ----------------------------
+// -----------------------------------------
+const sectionObserver = new IntersectionObserver((entries) => {
+	entries.forEach(entry=>{
+		if (!entry.isIntersecting) return;
+
+		// I know a loop inside a loop, but it's small and this works without pulling my hair out
+		navAnchorLinks.forEach((l) => l.classList.remove("is-active"));
+
+		const id = entry.target.id;
+		const link = linkById.get(id);
+		link?.classList.add("is-active");
+	})
+}, 
+{
+	threshold: 0.1,
+	rootMargin: "-40% 0px -40% 0px"
+})
+
+
+sectionById.forEach((section) => sectionObserver.observe(section));
+
