@@ -2,15 +2,15 @@
 	/* background: var(--background-gradient); */
 	border: 2px solid var(--mode-opposite-color);
 	padding: 1.25em;
-	font-size: 1rem;
-	line-height: 1.5;
+	font-size: 0.875rem;
+	line-height: 1.6;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 	width: 100%;
-	height: clamp(32rem, 75vh, 100rem);
-	margin: 0 auto 7vh;
+	height: auto;
+	margin: 0 auto 5vh;
 	position: relative;
 
 	text-shadow: var(--colored-shadow-mode);
@@ -58,50 +58,49 @@
 
 .bio-section{
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	height: 60%;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: auto; 
 }
 
 .profile-pic{
-	width: 20%;
-	height: 100%;
-	object-fit: cover;
-	background: var(--ascii-pfp-bg);
+	display: none;
 }
 
 .bio-section-text{
 	display: flex;
 	flex-direction: column;
-	gap: 1em;
-	padding-left: 1rem;
-	width: 80%;
+	gap: 1rem;
+	padding-left: 0;
+	width: 100%;
 }
 
 .bio-section-text-heading-container{
 	display: flex;
 	flex-wrap: wrap;
+	margin: 1em 0 0;
 }
 
 .bio-section-text-heading{
-	white-space: nowrap;
-	font-size: clamp(0.6rem, 1.65vw, 1.2rem);
+	font-size: clamp(0.6rem, 1.8vw, 1rem);
 }
 
 .section-container-lower-half{
-	height: 40%;
+	height: auto;
 	border-top: 2px dashed var(--mode-opposite-color);
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 
-.skills-section{
-	width: 68%;
+.skills-section,
+.contact-section{
+	width: 100%;
+	border-left: none;
 }
 
 .contact-section{
-	border-left: 2px dashed var(--mode-opposite-color);
-	width: 32%;
+	border-top: 2px dashed var(--mode-opposite-color);
 }
 
 .skills-section-heading,
@@ -114,6 +113,7 @@
 
 .skills-section-list-item,
 .contact-section-list-item{
+	position: relative;
 	list-style-position: inside;
 }
 
@@ -124,15 +124,6 @@
 .skills-section-list-item{
 	list-style-type: "­­­­­­­­­­­­▪­­­­­­­ ­";
 }
-
-.skills-section-list-item::marker { 
-	content: "▪"; 
-}
-
-.contact-section-list-item::marker { 
-	content: ">"; 
-}  
-
 
 .skills-section-list{
 	display: grid;
@@ -167,77 +158,78 @@
 	list-style-type: "< ";
 }
 
-.contact-section-list-item:has(.contact-section-link:hover)::marker,
-.contact-section-list-item:has(.contact-section-link:focus)::marker{
-	content: "<";
-}
-
 .contact-section-list-item:has(.contact-section-link:hover)::after,
 .contact-section-list-item:has(.contact-section-link:focus)::after{
 	content:">";
 	position: absolute;
-	padding-left: 2ch;
+	padding-left: 1ch;
 }
 
+@supports selector(::marker) {
+	.skills-section-list-item::marker { 
+		content: "▪"; 
+	}
+	
+	.contact-section-list-item::marker { 
+		content: ">"; 
+	}  
 
-@media (max-width: 45rem) {
+	.contact-section-list-item:has(.contact-section-link:hover)::marker,
+	.contact-section-list-item:has(.contact-section-link:focus)::marker{
+		content: "<";
+	}
+}
+
+@media (min-width: 45rem) {
 
 	.about_me_section{
-		height: auto;
-		margin: 0 auto 5vh;
-		font-size: 0.875rem;
-		line-height: 1.6;
-	}
-
-	
+		height: clamp(32rem, 75vh, 100rem);
+		margin: 0 auto 7vh;
+		font-size: 1rem;
+		line-height: 1.5;
+	}	
 
 	.bio-section{
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		height: auto; 
+		flex-direction: row;
+		justify-content: space-between;
+		height: 60%;
 	}
 
 	.profile-pic{
-		display: none;
+		width: 20%;
+		height: 100%;
+		object-fit: cover;
+		background: var(--ascii-pfp-bg);
+		display: block;
 	}
 
 	.bio-section-text{
-		gap: 1rem;
-		padding-left: 0;
-		width: 100%;
+		padding-left: 1rem;
+		width: 80%;
 	}
 
 	.bio-section-text-heading-container{
-		margin: 1em 0 0;
+		margin: 0;  
 	}
 
 	.bio-section-text-heading{
-		font-size: clamp(0.6rem, 1.8vw, 1rem);
+		white-space: nowrap;
+		font-size: clamp(0.6rem, 1.65vw, 1.2rem);
 	}
 
 	.section-container-lower-half{
-		height: auto;
-		flex-direction: column;
-		gap: 1em;
+		height: 40%;
+		flex-direction: row;
 	}
 
-	.skills-section,
-	.contact-section{
-		width: 100%;
-		border-left: none;
+	.skills-section{
+		width: 68%;
 	}
 
 	.contact-section{
-		border-top: 2px dashed var(--mode-opposite-color);
+		border-top: none;
+		border-left: 2px dashed var(--mode-opposite-color);
+		width: 32%;
 	}
 
-	.skills-section-heading,
-	.contact-section-heading{
-		font-weight: 700;
-		padding-top: 0.4em; 
-		padding-bottom: 0.25rem;
-		border-bottom: 2px dashed var(--mode-opposite-color);
-	}
 }
