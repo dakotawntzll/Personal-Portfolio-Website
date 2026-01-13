@@ -10,7 +10,7 @@
 
 	width: 100%;
 	height: auto;
-	margin: 0 auto 5dvh;
+	/* margin: 0 auto 5dvh; */
 	position: relative;
 
 	text-shadow: var(--colored-shadow-mode);
@@ -184,7 +184,7 @@
 
 	.about-me-section{
 		height: clamp(32rem, 75vh, 100rem);
-		margin: 0 auto 7vh;
+		/* margin: 0 auto 7vh; */
 		font-size: 1rem;
 		line-height: 1.5;
 	}	

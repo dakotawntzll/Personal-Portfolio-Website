@@ -418,7 +418,7 @@ const onScroll = () => {
 	requestAnimationFrame(updateLogoRotation);
 };
 
-updateLogoRotation(); // set initial
+updateLogoRotation(); 
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", updateLogoRotation);
 

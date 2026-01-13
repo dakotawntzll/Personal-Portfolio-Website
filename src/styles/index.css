@@ -604,6 +604,20 @@ main {
 	animation-delay: 1s;
 }
 
+/* ================================					
+		Footer
+================================*/
+footer{
+	background: var(--mode-color);
+	background: var(--header-gradient);
+	color: var(--mode-opposite-color);
+	padding: 1.5em;
+	text-align: center;
+	rotate: 180deg;
+	display: flex;
+	margin-top: 1rem;
+	text-shadow: var(--colored-shadow-mode);
+}
 
 /* ===============================================================================================
 											
@@ -666,7 +680,9 @@ main {
 	scroll-snap-stop: normal; 
 	scroll-margin-top: 3rem;
 	scroll-margin-bottom: 1.5rem;
+	scroll-padding: 100px;
 }
+
 
 
 /* ===============================================================================================
