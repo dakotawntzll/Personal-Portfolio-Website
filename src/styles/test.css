@@ -28,7 +28,7 @@
 	transform: translateY(-50%);
 	z-index: 2; 
 }
-
+ 
 .section-container{
 	position: relative;
 	display: flex;
@@ -233,3 +233,4 @@
 	}
 
 }
+
