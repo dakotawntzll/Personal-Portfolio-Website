@@ -10,7 +10,7 @@
 
 	width: 100%;
 	height: auto;
-	margin: 0 auto 5vh;
+	margin: 0 auto 5dvh;
 	position: relative;
 
 	text-shadow: var(--colored-shadow-mode);
