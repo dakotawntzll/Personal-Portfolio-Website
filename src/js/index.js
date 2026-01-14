@@ -355,7 +355,15 @@ navLinksDropdownContainer.addEventListener("focusout", () => {
 			setNavMenu(false);
 		}
 	});
-});
+}); 
+
+navLinksDropdownContainer.addEventListener("click", () => {
+	requestAnimationFrame(() => {
+		if (!navLinksDropdownContainer.contains(document.activeElement)) {
+			setNavMenu(false);
+		}
+	});
+}); 
 
 document.addEventListener("keydown", (e) => {
 	if (e.key === "Escape") {
