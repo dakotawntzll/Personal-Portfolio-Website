@@ -184,7 +184,7 @@ html {
 	scrollbar-color: var(--scrollbar-colors);
 	scroll-behavior: smooth;
 
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: y proximity;
 }
 
 body {
@@ -698,6 +698,10 @@ footer{
 
 
 @media (min-width: 45rem) {
+
+	html {
+		scroll-snap-type: y mandatory;
+	}
 
 	.container {
 		width: 85%;
