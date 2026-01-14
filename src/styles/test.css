@@ -1,6 +1,7 @@
 .about-me-section{
 	/* background: var(--background-gradient); */
-	border: 2px solid var(--mode-opposite-color);
+	/* border: 2px solid var(--mode-opposite-color); */
+	box-shadow: var(--colored-shadow-mode);
 	padding: 1.25em;
 	font-size: 0.85rem;
 	line-height: 1.6;
@@ -35,7 +36,7 @@
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	border: 2px dashed var(--mode-opposite-color);
+	/* border: 2px dashed var(--mode-opposite-color); */
 }
 
 /* Padding Top/Bottom */
@@ -66,6 +67,7 @@
 
 .profile-pic{
 	display: none;
+	filter: url(#multiGlow);
 }
 
 .bio-section-text{
@@ -88,27 +90,30 @@
 
 .section-container-lower-half{
 	height: auto;
-	border-top: 2px dashed var(--mode-opposite-color);
+	/* border-top: 2px dashed var(--mode-opposite-color); */
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 
 .skills-section,
 .contact-section{
 	width: 100%;
-	border-left: none;
+	position: relative;
+	/* border-left: none; */
 }
 
 .contact-section{
-	border-top: 2px dashed var(--mode-opposite-color);
+	/* border-top: 2px dashed var(--mode-opposite-color); */
 }
 
 .skills-section-heading,
 .contact-section-heading{
+	position: relative;
 	font-weight: 700;
 	padding-top: 0.4em; 
 	padding-bottom: 0.25rem;
-	border-bottom: 2px dashed var(--mode-opposite-color);
+	/* border-bottom: 2px dashed var(--mode-opposite-color); */
 }
 
 .skills-section-list-item,
@@ -163,6 +168,44 @@
 	content:">";
 	position: absolute;
 	padding-left: 1ch;
+}
+
+.about-me-section::after,
+.section-container::after,
+.skills-section-heading::after,
+.contact-section-heading::after,
+.section-container-lower-half::after,
+.skills-section::after,
+.contact-section::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	filter: url(#multiGlow);
+	z-index: -1;
+	pointer-events: none;
+}
+.about-me-section::after{
+	border: 2px solid var(--mode-opposite-color);
+}
+.section-container::after{
+	border: 2px dashed var(--mode-opposite-color);
+}
+.skills-section-heading::after,
+.contact-section-heading::after{
+	border-bottom: 2px dashed var(--mode-opposite-color);
+}
+.section-container-lower-half::after{
+	border-top: 2px dashed var(--mode-opposite-color);
+}
+.skills-section::after,
+.contact-section::after{
+	border-left: none;
+}
+.contact-section::after{
+	border-top: 2px dashed var(--mode-opposite-color);
 }
 
 @supports selector(::marker) {
@@ -227,10 +270,15 @@
 	}
 
 	.contact-section{
-		border-top: none;
-		border-left: 2px dashed var(--mode-opposite-color);
+		/* border-top: none;
+		border-left: 2px dashed var(--mode-opposite-color); */
 		width: 32%;
 	}
 
+	.contact-section::after{
+		border-top: none;
+		border-left: 2px dashed var(--mode-opposite-color);
+	}
 }
+
 
