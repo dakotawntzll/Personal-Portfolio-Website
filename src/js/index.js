@@ -357,13 +357,16 @@ navLinksDropdownContainer.addEventListener("focusout", () => {
 	});
 }); 
 
-navLinksDropdownContainer.addEventListener("pointerdown", () => {
-	requestAnimationFrame(() => {
-		if (!navLinksDropdownContainer.contains(document.activeElement) && navLinksDropdownContainerOpen) {
-			setNavMenu(false);
-		}
-	});
-}); 
+navMenu.addEventListener("click", (e) => {
+	const link = e.target.closest('a[href^="#"]');
+	if (!link) return;
+
+	// Only close in mobile mode
+	if (!navDesktopMQ.matches) {
+		setNavMenu(false);
+		suppressNextNavClickToggle = false;
+	}
+});
 
 document.addEventListener("keydown", (e) => {
 	if (e.key === "Escape") {
