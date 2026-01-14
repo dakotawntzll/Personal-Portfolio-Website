@@ -151,7 +151,7 @@
 			<div class="container">
 				<section class="about-me-section fade-in" id="about-me-section">
 		
-					<h2 class="section-heading ascii-on-fade">About_Me</h2>
+					<h2 class="section-heading ascii-on-fade">About_Me.txt</h2>
 		
 					<div class="section-container">
 		
@@ -259,9 +259,8 @@
 		<svg width="0" height="0" aria-hidden="true" focusable="false"
 			style="position:absolute; left:-9999px; top:-9999px; overflow:hidden;">
 			<defs>
-				<filter id="multiGlow" x="-25%" y="-25%" width="150%" height="150%">
-		
-					<!-- 1px white glow -->
+				<filter id="multiGlowDarkMode" x="-25%" y="-25%" width="150%" height="150%">
+
 					<feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b1" />
 					<feColorMatrix in="b1" result="c1" type="matrix" values="
 							1 0 0 0 0
@@ -269,7 +268,6 @@
 							0 0 1 0 0
 							0 0 0 1 0" />
 		
-					<!-- 3px soft green -->
 					<feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b2" />
 					<feColorMatrix in="b2" result="c2" type="matrix" values="
 							0 0 0 0 0.843
@@ -277,7 +275,6 @@
 							0 0 0 0 0.835
 							0 0 0 0.7 0" />
 		
-					<!-- 6px medium green -->
 					<feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b3" />
 					<feColorMatrix in="b3" result="c3" type="matrix" values="
 							0 0 0 0 0.651
@@ -285,7 +282,6 @@
 							0 0 0 0 0.639
 							0 0 0 0.5 0" />
 		
-					<!-- 8px deep green -->
 					<feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b4" />
 					<feColorMatrix in="b4" result="c4" type="matrix" values="
 							0 0 0 0 0.318
@@ -301,6 +297,46 @@
 						<feMergeNode in="SourceGraphic" />
 					</feMerge>
 		
+				</filter>
+
+				<filter id="multiGlowLightMode" x="-25%" y="-25%" width="150%" height="150%">
+				
+					<feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b1" />
+					<feColorMatrix in="b1" result="c1" type="matrix" values="
+				      0 0 0 0 0
+				      0 0 0 0 0
+				      0 0 0 0 0
+				      0 0 0 1 0" />
+				
+					<feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b2" />
+					<feColorMatrix in="b2" result="c2" type="matrix" values="
+				      0 0 0 0 0.118
+				      0 0 0 0 0.141
+				      0 0 0 0 0.110
+				      0 0 0 0.5 0" />
+				
+					<feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b3" />
+					<feColorMatrix in="b3" result="c3" type="matrix" values="
+				      0 0 0 0 0.180
+				      0 0 0 0 0.259
+				      0 0 0 0 0.176
+				      0 0 0 0.3 0" />
+				
+					<feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b4" />
+					<feColorMatrix in="b4" result="c4" type="matrix" values="
+				      0 0 0 0 0.157
+				      0 0 0 0 0.365
+				      0 0 0 0 0.086
+				      0 0 0 0.3 0" />
+				
+					<feMerge>
+						<feMergeNode in="c1" />
+						<feMergeNode in="c2" />
+						<feMergeNode in="c3" />
+						<feMergeNode in="c4" />
+						<feMergeNode in="SourceGraphic" />
+					</feMerge>
+				
 				</filter>
 			</defs>
 		</svg>

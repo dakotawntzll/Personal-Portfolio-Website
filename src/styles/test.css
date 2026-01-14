@@ -67,8 +67,8 @@
 
 .profile-pic{
 	display: none;
-	filter: url(#multiGlow);
 }
+
 
 .bio-section-text{
 	display: flex;
@@ -103,9 +103,9 @@
 	/* border-left: none; */
 }
 
-.contact-section{
-	/* border-top: 2px dashed var(--mode-opposite-color); */
-}
+/* .contact-section{
+	border-top: 2px dashed var(--mode-opposite-color);
+} */
 
 .skills-section-heading,
 .contact-section-heading{
@@ -186,7 +186,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	filter: url(#multiGlow);
+	filter: var(--border-glow-filter);
 	z-index: -1;
 	pointer-events: none;
 }
@@ -231,8 +231,10 @@
 		width: 20%;
 		height: 100%;
 		object-fit: cover;
-		background: var(--ascii-pfp-bg);
 		display: block;
+		position: relative;
+		background: var(--ascii-pfp-bg);
+		filter: url(#multiGlowLightMode);
 	}
 
 	.bio-section-text{

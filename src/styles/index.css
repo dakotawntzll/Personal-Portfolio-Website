@@ -39,10 +39,13 @@
 	--hero-text-bg: white;
 	--hero-blend-mod: screen;
 
+	
 	--mode-color: black;
 	--mode-opposite-color: white;
 
 	--ascii-pfp-bg: rgba(0, 0, 0, 0);
+
+	--border-glow-filter: url(#multiGlowDarkMode);
 
 	--background-gradient: 
 		conic-gradient(
@@ -104,6 +107,8 @@
 		--hero-blend-mod: multiply;
 
 		--ascii-pfp-bg: rgb(0, 0, 0);
+
+		--border-glow-filter: url(#multiGlowLightMode);
 
 		--mode-color: white;
 		--mode-opposite-color: black;
