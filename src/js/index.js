@@ -357,9 +357,9 @@ navLinksDropdownContainer.addEventListener("focusout", () => {
 	});
 }); 
 
-navLinksDropdownContainer.addEventListener("click", () => {
+navLinksDropdownContainer.addEventListener("pointerdown", () => {
 	requestAnimationFrame(() => {
-		if (!navLinksDropdownContainer.contains(document.activeElement)) {
+		if (!navLinksDropdownContainer.contains(document.activeElement) && navLinksDropdownContainerOpen) {
 			setNavMenu(false);
 		}
 	});
