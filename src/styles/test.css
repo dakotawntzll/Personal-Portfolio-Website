@@ -120,14 +120,15 @@
 .contact-section-list-item{
 	position: relative;
 	list-style-position: inside;
+	list-style: none;
 }
 
-.contact-section-list-item{
-	list-style-type: "> ";
+.skills-section-list-item::before{
+	content: "▪";
 }
 
-.skills-section-list-item{
-	list-style-type: "­­­­­­­­­­­­▪­­­­­­­ ­";
+.contact-section-list-item::before{
+	content: ">";
 }
 
 .skills-section-list{
@@ -158,9 +159,9 @@
 	margin: -0.2em calc(-0.55em + 2ch);
 }
 
-.contact-section-list-item:has(.contact-section-link:hover),
-.contact-section-list-item:has(.contact-section-link:focus){
-	list-style-type: "< ";
+.contact-section-list-item:has(.contact-section-link:hover)::before,
+.contact-section-list-item:has(.contact-section-link:focus)::before{
+	content:"<";
 }
 
 .contact-section-list-item:has(.contact-section-link:hover)::after,
@@ -169,6 +170,8 @@
 	position: absolute;
 	padding-left: 1ch;
 }
+
+/* Borders */
 
 .about-me-section::after,
 .section-container::after,
@@ -208,20 +211,6 @@
 	border-top: 2px dashed var(--mode-opposite-color);
 }
 
-@supports selector(::marker) {
-	.skills-section-list-item::marker { 
-		content: "▪"; 
-	}
-	
-	.contact-section-list-item::marker { 
-		content: ">"; 
-	}  
-
-	.contact-section-list-item:has(.contact-section-link:hover)::marker,
-	.contact-section-list-item:has(.contact-section-link:focus)::marker{
-		content: "<";
-	}
-}
 
 @media (min-width: 45rem) {
 
