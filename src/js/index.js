@@ -409,11 +409,14 @@ navDesktopMQ.addEventListener("change", syncNavDropdownToViewport);
 const logoImg = document.querySelector(".logo");
 let ticking = false;
 
+// Trying to make it so on mobile the scrolling isn't janky
+let stableVH = window.innerHeight;
+
 const updateLogoRotation = () => {
 	const scrollTop =
 		window.scrollY || document.documentElement.scrollTop;
 	const maxScroll =
-		document.documentElement.scrollHeight - window.innerHeight || 1;
+		document.documentElement.scrollHeight - stableVH || 1;
 
 	const progress = scrollTop / maxScroll; // 0 -> 1
 	const turns = 1; // 1 = 360°, 2 = 720°, etc.
@@ -431,7 +434,11 @@ const onScroll = () => {
 
 updateLogoRotation(); 
 window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", updateLogoRotation);
+
+window.addEventListener("resize", () => {
+	stableVH = window.innerHeight;
+	updateLogoRotation();
+});
 
 
 
