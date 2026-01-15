@@ -265,6 +265,77 @@ body {
 	text-align: right;
 }
 
+/* ================================					
+		About Me Section
+================================*/
+
+.section-heading{
+	font-weight: 700;
+	line-height: 1;
+	padding: 0.25em 0.4em;
+	padding-top: 0.3em;
+	background-color: var(--mode-opposite-color);
+	color: var(--mode-color);
+	position: absolute;
+	transform: translateY(-50%);
+	z-index: 2; 
+}
+ 
+.bio-section-text{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding-left: 0;
+	width: 100%;
+}
+
+.bio-section-text-heading{
+	font-size: clamp(0.6rem, 1.8vw, 1rem);
+}
+
+.skills-section-heading,
+.contact-section-heading{
+	position: relative;
+	font-weight: 700;
+	padding-top: 0.4em; 
+	padding-bottom: 0.25rem;
+	/* border-bottom: 2px dashed var(--mode-opposite-color); */
+}
+
+.contact-section-link,
+.skills-section-skill{
+	color: inherit;
+	text-decoration: none;
+	background: inherit;
+	/* padding: 0.2em -.4em; */
+	padding: 0.4em calc(1ch + 0.8em);
+	margin: -0.4em -0.8em;
+}
+
+.contact-section-link:hover,
+.contact-section-link:focus{
+	/* text-decoration: underline; */
+	background-color: var(--mode-opposite-color);
+	color: var(--mode-color);
+	font-weight: 700;
+	text-shadow: var(--colored-shadow-opposite-mode);
+	border-radius: 0;
+	outline: none;
+	margin: -0.2em calc(-0.55em + 2ch);
+}
+
+.contact-section-list-item:has(.contact-section-link:hover)::before,
+.contact-section-list-item:has(.contact-section-link:focus)::before{
+	content:"<";
+}
+
+.contact-section-list-item:has(.contact-section-link:hover)::after,
+.contact-section-list-item:has(.contact-section-link:focus)::after{
+	content:">";
+	position: absolute;
+	padding-left: 1ch;
+}
+
 
 /* ===============================================================================================
 											
@@ -608,6 +679,153 @@ main {
   	animation: fade 2s forwards;
 	animation-delay: 1s;
 }
+/* ================================					
+		About Me Section
+================================*/
+
+/* Padding Top/Bottom */
+.skills-section-list,
+.contact-section-list,
+.bio-section{
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+/* Padding sides */
+.bio-section,
+.skills-section-heading,
+.contact-section-heading,
+.skills-section-list,
+.contact-section-list{
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.about-me-section{
+	box-shadow: var(--colored-shadow-mode);
+	padding: 1.25em;
+	font-size: 0.85rem;
+	line-height: 1.75;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 100%;
+	height: auto;
+	position: relative;
+
+	text-shadow: var(--colored-shadow-mode);
+	scroll-margin-top: 6rem; /* unsure about this */
+}
+
+.section-container{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+.bio-section{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: auto; 
+}
+
+.profile-pic{
+	display: none;
+}
+
+.bio-section-text-heading-container{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1em 0 0;
+}
+
+.section-container-lower-half{
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.skills-section,
+.contact-section{
+	width: 100%;
+	position: relative;
+}
+
+.skills-section-list-item,
+.contact-section-list-item{
+	position: relative;
+	list-style-position: inside;
+	list-style: none;
+}
+
+.skills-section-list-item::before{
+	content: "▪";
+}
+
+.contact-section-list-item::before{
+	content: ">";
+}
+
+.contact-section-list{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	white-space: nowrap;
+	gap: 1ch;
+}
+
+.skills-section-list{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	white-space: nowrap;
+}
+
+/* Borders */
+
+.about-me-section::after,
+.section-container::after,
+.skills-section-heading::after,
+.contact-section-heading::after,
+.section-container-lower-half::after,
+.skills-section::after,
+.contact-section::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	filter: var(--border-glow-filter);
+	z-index: -1;
+	pointer-events: none;
+}
+.about-me-section::after{
+	border: 2px solid var(--mode-opposite-color);
+}
+.section-container::after{
+	border: 2px dashed var(--mode-opposite-color);
+}
+.skills-section-heading::after,
+.contact-section-heading::after{
+	border-bottom: 2px dashed var(--mode-opposite-color);
+}
+.section-container-lower-half::after{
+	border-top: 2px dashed var(--mode-opposite-color);
+}
+.skills-section::after,
+.contact-section::after{
+	border-left: none;
+}
+.contact-section::after{
+	border-top: 2px dashed var(--mode-opposite-color);
+}
+
+
 
 /* ================================					
 		Footer
@@ -799,5 +1017,72 @@ footer{
 
 	.hero-text-subtitle {
 		font-size: 1.25rem;
+	}
+
+		.about-me-section{
+		height: clamp(32rem, 75vh, 100rem);
+		/* margin: 0 auto 7vh; */
+		font-size: 1rem;
+		line-height: 1.5;
+	}	
+
+	.bio-section{
+		flex-direction: row;
+		justify-content: space-between;
+		height: 60%;
+	}
+
+	.profile-pic{
+		width: 20%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		position: relative;
+		background: var(--ascii-pfp-bg);
+		filter: url(#multiGlowLightMode);
+	}
+
+	.bio-section-text{
+		padding-left: 1rem;
+		width: 80%;
+	}
+
+	.bio-section-text-heading-container{
+		margin: 0;  
+	}
+
+	.bio-section-text-heading{
+		white-space: nowrap;
+		font-size: clamp(0.6rem, 1.65vw, 1.2rem);
+	}
+
+	.section-container-lower-half{
+		height: 40%;
+		flex-direction: row;
+	}
+
+	.skills-section{
+		width: 68%;
+	}
+
+	.contact-section{
+		/* border-top: none;
+		border-left: 2px dashed var(--mode-opposite-color); */
+		width: 32%;
+	}
+
+	.contact-section::after{
+		border-top: none;
+		border-left: 2px dashed var(--mode-opposite-color);
+	}
+
+	.contact-section-list{
+		display: block;
+	}
+
+	.contact-section-link,
+	.skills-section-skill{
+		padding: 0.25em calc(1ch + 0.5em);
+		margin: -0.25em -0.5em;
 	}
 }

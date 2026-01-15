@@ -5,7 +5,7 @@
 let glitchEffect = null;
 
 const initGlitch = () => {
-	const sizeCursor = window.innerWidth > window.innerHeight ? "100vw" : "100vh";
+	const sizeCursor = window.innerWidth > window.innerHeight ? "100vw" : "150vh";
 
 	glitchEffect = glitchGL({
 		target: ".glitchGL",
