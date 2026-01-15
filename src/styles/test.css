@@ -131,6 +131,13 @@
 	content: ">";
 }
 
+.contact-section-list{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	white-space: nowrap;
+	gap: 1ch;
+}
+
 .skills-section-list{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -143,8 +150,8 @@
 	text-decoration: none;
 	background: inherit;
 	/* padding: 0.2em -.4em; */
-	padding: 0.3em calc(1ch + 0.6em);
-	margin: -0.3em -0.6em;
+	padding: 0.4em calc(1ch + 0.8em);
+	margin: -0.4em -0.8em;
 }
 
 .contact-section-link:hover,
@@ -269,6 +276,16 @@
 	.contact-section::after{
 		border-top: none;
 		border-left: 2px dashed var(--mode-opposite-color);
+	}
+
+	.contact-section-list{
+		display: block;
+	}
+
+	.contact-section-link,
+	.skills-section-skill{
+		padding: 0.25em calc(1ch + 0.5em);
+		margin: -0.25em -0.5em;
 	}
 }
 
