@@ -1,9 +1,9 @@
 // ---------------------- ASCII ripple animation ----------------------
 
-// Constants for wave animation behavior (tweak feel here)
+// Constants for wave animation behavior 
 const WAVE_THRESH = 2;
 const CHAR_MULT = 9;
-const ANIM_STEP = 90;
+const ANIM_STEP = 50;
 const WAVE_BUF = 2;
 
 /**
@@ -57,6 +57,7 @@ const createASCIIShift = (el, opts = {}) => {
 		});
 
 		if (!isAnimating) start();
+		lastRectUpdate = 0; 
 	};
 
 	// Convenience helper for other systems (ex: on fade-in)
@@ -135,6 +136,8 @@ const createASCIIShift = (el, opts = {}) => {
 		isAnimating = true;
 		el.classList.add("as");
 
+		let lastKey = -1;
+
 		const animate = () => {
 			const now = performance.now();
 
@@ -145,7 +148,12 @@ const createASCIIShift = (el, opts = {}) => {
 				return;
 			}
 
-			el.textContent = getScrambledText(now);
+			const key = Math.floor(now / ANIM_STEP);
+			if (key !== lastKey) {
+				el.textContent = getScrambledText(now);
+				lastKey = key;
+			}
+
 			rafId = requestAnimationFrame(animate);
 		};
 
