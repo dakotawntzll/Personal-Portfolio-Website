@@ -425,6 +425,7 @@ main {
 
 	transform-origin: 50% 50%;
 	will-change: transform;
+	transform: translateZ(0) rotate(var(--logo-rot, 0deg));
 }
 
 

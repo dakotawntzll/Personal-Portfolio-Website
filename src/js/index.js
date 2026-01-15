@@ -419,7 +419,7 @@ const updateLogoRotation = () => {
 	const turns = 1; // 1 = 360°, 2 = 720°, etc.
 	const deg = progress * 360 * turns;
 
-	logoImg.style.transform = `rotate(${deg}deg)`;
+	logoImg.style.setProperty("--logo-rot", `${deg}deg`);
 	ticking = false;
 };
 
