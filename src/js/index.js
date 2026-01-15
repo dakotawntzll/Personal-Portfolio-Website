@@ -478,8 +478,7 @@ navAnchorLinks.forEach((link) => {
 //  Active Tabs and Snapping  --------------
 // -----------------------------------------
 
-// let resetTimer = null;
-// let lastActiveId = null;
+let lastActiveId = null;
 
 const sectionObserver = new IntersectionObserver((entries) => {
 	entries.forEach(entry=>{
@@ -487,7 +486,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 		const id = entry.target.id;
 		if (id === lastActiveId) return;
-		// lastActiveId = id;
+		lastActiveId = id;
 
 		// I know a loop inside a loop, but it's small and this works without pulling my hair out
 		navAnchorLinks.forEach((l) => l.classList.remove("is-active"));
@@ -495,13 +494,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
 		const link = linkById.get(id);
 		link?.classList.add("is-active");
 
-		// // Snapping Logic to switch to mandatory
-		// document.documentElement.style.scrollSnapType = "y mandatory";
-
-		// clearTimeout(resetTimer);
-		// resetTimer = setTimeout(() => {
-		// 	document.documentElement.style.scrollSnapType = "none";
-		// }, 600);
 	})
 }, 
 {
