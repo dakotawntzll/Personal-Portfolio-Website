@@ -376,6 +376,9 @@ main {
 
 .main-header{
 	position: fixed;
+	top: max(0px, env(safe-area-inset-top));
+	left: 0;
+	right: 0;
 	width: 100%;
 	background: var(--header-gradient);
 	padding: 0.5em 0;
@@ -544,8 +547,8 @@ main {
 	position: relative;
 	width: 100%;
 
-	max-height: 100vh;
-	height: 100vh;
+	max-height: 100dvh;
+	height: 100dvh;
 	/* aspect-ratio: 16 / 9; */
 
 	display: flex;
@@ -902,9 +905,9 @@ footer{
 .about-me-section{
 	scroll-snap-align: start;
 	scroll-snap-stop: normal; 
-	scroll-margin-top: 3rem;
+	/* scroll-margin-top: 3rem; */
 	scroll-margin-bottom: 1.5rem;
-	scroll-padding: 100px;
+	/* scroll-padding: 100px; */
 }
 
 
