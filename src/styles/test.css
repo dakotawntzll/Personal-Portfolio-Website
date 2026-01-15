@@ -4,7 +4,7 @@
 	box-shadow: var(--colored-shadow-mode);
 	padding: 1.25em;
 	font-size: 0.85rem;
-	line-height: 1.6;
+	line-height: 1.75;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -143,8 +143,8 @@
 	text-decoration: none;
 	background: inherit;
 	/* padding: 0.2em -.4em; */
-	padding: 0.2em calc(1ch + 0.4em);
-	margin: -0.2em -0.4em;
+	padding: 0.3em calc(1ch + 0.6em);
+	margin: -0.3em -0.6em;
 }
 
 .contact-section-link:hover,
