@@ -461,6 +461,19 @@ document.addEventListener("pointerdown", () => {
 	tabNavigationMode = false;
 });
 
+let restoreSnapTimer = null;
+
+function turnOffSnapTemp() {
+	const htmlElement = document.querySelector("html");
+	htmlElement.style.scrollSnapType = "none";
+
+	clearTimeout(restoreSnapTimer);
+
+	restoreSnapTimer = setTimeout(() => {
+		htmlElement.style.scrollSnapType = "y mandatory"; 
+	}, 1500);
+}
+
 navAnchorLinks.forEach((link) => {
 
 	const id = link.getAttribute("href").slice(1);
@@ -475,6 +488,8 @@ navAnchorLinks.forEach((link) => {
 		e.preventDefault()
 		if (!tabNavigationMode) return;
 
+		turnOffSnapTemp()
+
 		target.scrollIntoView({
 			behavior: "smooth",
 			block: "start",
@@ -483,6 +498,8 @@ navAnchorLinks.forEach((link) => {
 
 	link.addEventListener("click", (e) => {
 		e.preventDefault()
+		
+		turnOffSnapTemp()
 
 		target.scrollIntoView({
 			behavior: "smooth",
