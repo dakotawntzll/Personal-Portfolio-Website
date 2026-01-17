@@ -471,8 +471,18 @@ navAnchorLinks.forEach((link) => {
 	sectionById.set(id, target);
 	linkById.set(id, link);
 
-	link.addEventListener("focus", () => {
+	link.addEventListener("focus", (e) => {
+		e.preventDefault()
 		if (!tabNavigationMode) return;
+
+		target.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	});
+
+	link.addEventListener("click", (e) => {
+		e.preventDefault()
 
 		target.scrollIntoView({
 			behavior: "smooth",
@@ -482,7 +492,7 @@ navAnchorLinks.forEach((link) => {
 });
 
 // -----------------------------------------
-//  Active Tabs and Snapping  --------------
+//  Active Tabs ----------------------------
 // -----------------------------------------
 
 let lastActiveId = null;

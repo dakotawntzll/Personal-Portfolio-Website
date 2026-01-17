@@ -38,14 +38,11 @@
 	--hero-filter: sepia(70%) hue-rotate(75deg) contrast(110%) saturate(130%);
 	--hero-text-bg: white;
 	--hero-blend-mod: screen;
-
 	
 	--mode-color: black;
 	--mode-opposite-color: white;
 
 	--ascii-pfp-bg: rgba(0, 0, 0, 0);
-
-	--border-glow-filter: url(#multiGlowDarkMode);
 
 	--background-gradient: 
 		conic-gradient(
@@ -83,8 +80,8 @@
 	
 	--colored-shadow-mode:
 		0 0 1px rgba(255, 255, 255, 1),
-		0 0 3px rgb(215, 240, 213, .7),
-		0 0 6px rgb(166, 215, 163, .5),
+		0 0 3px rgba(215, 240, 213, .7),
+		0 0 6px rgba(166, 215, 163, .5),
 		0 0 8px rgba(81, 156, 56, .4);
 
 	--colored-shadow-opposite-mode:
@@ -92,6 +89,12 @@
 		0 0 3px rgba(30, 36, 28, 0.5),
 		0 0 6px rgba(46, 66, 45, 0.3),
 		0 0 8px rgba(40, 93, 22, 0.3);
+
+	--filter-colored-shadow-mode: 
+		drop-shadow(0 0 1px rgba(255, 255, 255, 0.9)) 
+		drop-shadow(0 0 3px rgba(215, 240, 213, .5))
+		drop-shadow(0 0 6px rgba(166, 215, 163, .4))
+		drop-shadow(0 0 8px rgba(81, 156, 56, .3));
 }
 
 @media (prefers-color-scheme: light) {
@@ -107,8 +110,6 @@
 		--hero-blend-mod: multiply;
 
 		--ascii-pfp-bg: rgb(0, 0, 0);
-
-		--border-glow-filter: url(#multiGlowLightMode);
 
 		--mode-color: white;
 		--mode-opposite-color: black;
@@ -136,7 +137,7 @@
 			);
 		
 		--colored-shadow-mode:
-			0 0 1px rgb(0, 0, 0),
+			0 0 1px rgba(0, 0, 0, 1),
 			0 0 3px rgba(30, 36, 28, 0.5),
 			0 0 6px rgba(46, 66, 45, 0.3),
 			0 0 8px rgba(40, 93, 22, 0.3);
@@ -147,6 +148,11 @@
 			0 0 6px rgb(166, 215, 163, .5),
 			0 0 8px rgba(81, 156, 56, .4);
 
+		--filter-colored-shadow-mode: 
+			drop-shadow(0 0 1px rgba(0, 0, 0, 0.9)) 
+			drop-shadow(0 0 3px rgba(30, 36, 28, 0.4))
+			drop-shadow(0 0 6px rgba(46, 66, 45, 0.3))
+			drop-shadow(0 0 8px rgba(40, 93, 22, 0.3));
 	}
 }
 
@@ -225,8 +231,9 @@ body {
 .social-link,
 .nav-link {
 	display: block;
-	padding: 0.35rem 0.75rem;
-	font-size: 0.9rem;
+	padding: 0.5rem 0.75rem;
+	font-weight: 700;
+	font-size: 1.4rem;
 	color: var(--nav-link-color);
 	text-decoration: none;
 	text-shadow: 0 0 2px black;
@@ -305,6 +312,7 @@ body {
 .contact-section-link,
 .skills-section-skill{
 	color: inherit;
+	font-weight: 400;
 	text-decoration: none;
 	background: inherit;
 	/* padding: 0.2em -.4em; */
@@ -335,7 +343,6 @@ body {
 	position: absolute;
 	padding-left: 1ch;
 }
-
 
 /* ===============================================================================================
 											
@@ -510,9 +517,9 @@ main {
 
 	display: flex;
 	flex-direction: column;
-	gap: 0.25rem;
+	gap: 0.5rem;
 
-	min-width: 7.5rem;
+	min-width: 50vw;
 
 	padding: 0.5rem 0.5rem;
 	margin: 0;
@@ -706,7 +713,7 @@ main {
 }
 
 .about-me-section{
-	box-shadow: var(--colored-shadow-mode);
+	/* box-shadow: var(--colored-shadow-mode); */
 	padding: 1.25em;
 	font-size: 0.85rem;
 	line-height: 1.75;
@@ -789,6 +796,12 @@ main {
 	white-space: nowrap;
 }
 
+.skills-section-list-item::selection,
+.contact-section-list-item::selection {
+  background: transparent; /* this fixes weird selection issue where extra space was selected */
+}
+
+
 /* Borders */
 
 .about-me-section::after,
@@ -800,14 +813,15 @@ main {
 .contact-section::after{
 	content: "";
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	filter: var(--border-glow-filter);
+	inset: 0;
+	width: auto;
+	height: auto;
 	z-index: -1;
 	pointer-events: none;
+	filter: var(--filter-colored-shadow-mode)
 }
+
+
 .about-me-section::after{
 	border: 2px solid var(--mode-opposite-color);
 }
@@ -828,7 +842,6 @@ main {
 .contact-section::after{
 	border-top: 2px dashed var(--mode-opposite-color);
 }
-
 
 
 /* ================================					
@@ -968,6 +981,12 @@ footer{
 		outline: transparent;			
 	}
 
+	.nav-menu,
+	.social-menu{
+		min-width: 7.5rem;
+		gap: 0.25rem;
+	}
+
 	.nav-menu{
 		list-style: none;
 		display: flex;
@@ -1023,7 +1042,7 @@ footer{
 		font-size: 1.25rem;
 	}
 
-		.about-me-section{
+	.about-me-section{
 		height: clamp(32rem, 75vh, 100rem);
 		/* margin: 0 auto 7vh; */
 		font-size: 1rem;
@@ -1043,7 +1062,11 @@ footer{
 		display: block;
 		position: relative;
 		background: var(--ascii-pfp-bg);
-		filter: url(#multiGlowLightMode);
+		filter: 
+			drop-shadow(0 0 1px rgba(255, 255, 255, 0.5)) 
+			drop-shadow(0 0 3px rgba(215, 240, 213, .4))
+			drop-shadow(0 0 6px rgba(166, 215, 163, .3))
+			drop-shadow(0 0 8px rgba(81, 156, 56, .2));
 	}
 
 	.bio-section-text{
@@ -1089,4 +1112,23 @@ footer{
 		padding: 0.25em calc(1ch + 0.5em);
 		margin: -0.25em -0.5em;
 	}
+}
+
+
+/* ===============================================================================================
+											
+											Misc
+
+=============================================================================================== */
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
 }

@@ -22,3 +22,6 @@ yarn-error.log*
 # Optional: OS or temp files
 Thumbs.db
 *.swp
+
+# Specific Files
+notes.txt
