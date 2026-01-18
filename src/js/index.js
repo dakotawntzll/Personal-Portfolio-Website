@@ -538,3 +538,19 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 sectionById.forEach((section) => sectionObserver.observe(section));
 
+
+// -------------------------------------------------------------------
+// ------------------- Light Mode Adjustments ------------------------
+// -------------------------------------------------------------------
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+function updatePfp() {
+	const pfp = document.getElementById("pfp");
+
+    pfp.src = prefersDark.matches
+        ? "./src/assets/ascii-pfpDarkMode.svg"
+        : "./src/assets/ascii-pfpLightMode.svg";
+};
+
+updatePfp();
+prefersDark.addEventListener("change", updatePfp);

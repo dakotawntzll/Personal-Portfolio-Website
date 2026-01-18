@@ -95,6 +95,12 @@
 		drop-shadow(0 0 3px rgba(215, 240, 213, .5))
 		drop-shadow(0 0 6px rgba(166, 215, 163, .4))
 		drop-shadow(0 0 8px rgba(81, 156, 56, .3));
+
+	--pfp-shadow:
+		drop-shadow(0 0 1px rgba(255, 255, 255, .4)) 
+		drop-shadow(0 0 2px rgba(215, 240, 213, .3))
+		drop-shadow(0 0 4px rgba(166, 215, 163, .2))
+		drop-shadow(0 0 6px rgba(81, 156, 56, .2));
 }
 
 @media (prefers-color-scheme: light) {
@@ -153,6 +159,12 @@
 			drop-shadow(0 0 3px rgba(30, 36, 28, 0.4))
 			drop-shadow(0 0 6px rgba(46, 66, 45, 0.3))
 			drop-shadow(0 0 8px rgba(40, 93, 22, 0.3));
+
+		--pfp-shadow:
+			drop-shadow(0 0 1px rgba(0, 0, 0, 0.5)) 
+			drop-shadow(0 0 2px rgba(30, 36, 28, 0.4))
+			drop-shadow(0 0 4px rgba(46, 66, 45, 0.3))
+			drop-shadow(0 0 6px rgba(40, 93, 22, 0.2));
 	}
 }
 
@@ -1061,12 +1073,8 @@ footer{
 		object-fit: cover;
 		display: block;
 		position: relative;
-		background: var(--ascii-pfp-bg);
-		filter: 
-			drop-shadow(0 0 1px rgba(255, 255, 255, 0.5)) 
-			drop-shadow(0 0 3px rgba(215, 240, 213, .4))
-			drop-shadow(0 0 6px rgba(166, 215, 163, .3))
-			drop-shadow(0 0 8px rgba(81, 156, 56, .2));
+		/* background: var(--ascii-pfp-bg); */
+		filter: var(--pfp-shadow) blur(0.2px);
 	}
 
 	.bio-section-text{
