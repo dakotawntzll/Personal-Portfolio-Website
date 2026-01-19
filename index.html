@@ -108,7 +108,7 @@
 						</ul>
 					</nav>
 				</div>
-			</header>
+			</header> 
 			
 			<section class="hero" id="hero-section">
 
@@ -148,24 +148,25 @@
 			</section>
 
 			<div class="container">
-				<section class="about-me-section" id="about-me-section">
+				<section class="about-me-section" id="about-me-section" tabindex="-1">
 		
 					<h2 class="section-heading ascii-on-fade">About_Me.txt</h2>
 		
 					<div class="section-container">
 		
 						<section class="bio-section">
-							<img class="profile-pic" src="./src/assets/ascii-pfp.svg" alt="Illustration of Dakota"/>
+							<img class="profile-pic" src="./src/assets/ascii-pfpDarkMode.svg" alt="Illustration of Dakota" id="pfp"/>
 		
 							<div class="bio-section-text">
 		
 								<div class="bio-section-text-heading-container">
-									<span class="bio-section-text-heading">
+									<span class="sr-only">Dakota Wentzell</span>
+									<span class="bio-section-text-heading" aria-hidden="true">
 										░█▀▄░█▀█░█░█░█▀█░▀█▀░█▀█░<br>
 										░█░█░█▀█░█▀▄░█░█░░█░░█▀█░<br>
 										░▀▀░░▀░▀░▀░▀░▀▀▀░░▀░░▀░▀░<br> 
 									</span>
-									<span class="bio-section-text-heading">
+									<span class="bio-section-text-heading" aria-hidden="true">
 										░█░█░█▀▀░█▀█░▀█▀░▀▀█░█▀▀░█░░░█░░░<br>
 										░█▄█░█▀▀░█░█░░█░░▄▀░░█▀▀░█░░░█░░░<br>
 										░▀░▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀▀▀░▀▀▀░<br> 
@@ -254,92 +255,6 @@
 				<p class="ascii-on-hover">&copy; 2026</p>
 			</div>
 		</footer>
-
-		<svg width="0" height="0" aria-hidden="true" focusable="false"
-			style="position:absolute; left:-9999px; top:-9999px; overflow:hidden;">
-			<defs>
-				<filter id="multiGlowDarkMode" x="-25%" y="-25%" width="150%" height="150%">
-
-					<feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b1" />
-					<feColorMatrix in="b1" result="c1" type="matrix" values="
-							1 0 0 0 0
-							0 1 0 0 0
-							0 0 1 0 0
-							0 0 0 1 0" />
-		
-					<feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b2" />
-					<feColorMatrix in="b2" result="c2" type="matrix" values="
-							0 0 0 0 0.843
-							0 0 0 0 0.941
-							0 0 0 0 0.835
-							0 0 0 0.7 0" />
-		
-					<feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b3" />
-					<feColorMatrix in="b3" result="c3" type="matrix" values="
-							0 0 0 0 0.651
-							0 0 0 0 0.843
-							0 0 0 0 0.639
-							0 0 0 0.5 0" />
-		
-					<feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b4" />
-					<feColorMatrix in="b4" result="c4" type="matrix" values="
-							0 0 0 0 0.318
-							0 0 0 0 0.612
-							0 0 0 0 0.220
-							0 0 0 0.4 0" />
-		
-					<feMerge>
-						<feMergeNode in="c1" />
-						<feMergeNode in="c2" />
-						<feMergeNode in="c3" />
-						<feMergeNode in="c4" />
-						<feMergeNode in="SourceGraphic" />
-					</feMerge>
-		
-				</filter>
-
-				<filter id="multiGlowLightMode" x="-25%" y="-25%" width="150%" height="150%">
-				
-					<feGaussianBlur in="SourceGraphic" stdDeviation="0.5" result="b1" />
-					<feColorMatrix in="b1" result="c1" type="matrix" values="
-				      0 0 0 0 0
-				      0 0 0 0 0
-				      0 0 0 0 0
-				      0 0 0 1 0" />
-				
-					<feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b2" />
-					<feColorMatrix in="b2" result="c2" type="matrix" values="
-				      0 0 0 0 0.118
-				      0 0 0 0 0.141
-				      0 0 0 0 0.110
-				      0 0 0 0.5 0" />
-				
-					<feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b3" />
-					<feColorMatrix in="b3" result="c3" type="matrix" values="
-				      0 0 0 0 0.180
-				      0 0 0 0 0.259
-				      0 0 0 0 0.176
-				      0 0 0 0.3 0" />
-				
-					<feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b4" />
-					<feColorMatrix in="b4" result="c4" type="matrix" values="
-				      0 0 0 0 0.157
-				      0 0 0 0 0.365
-				      0 0 0 0 0.086
-				      0 0 0 0.3 0" />
-				
-					<feMerge>
-						<feMergeNode in="c1" />
-						<feMergeNode in="c2" />
-						<feMergeNode in="c3" />
-						<feMergeNode in="c4" />
-						<feMergeNode in="SourceGraphic" />
-					</feMerge>
-				
-				</filter>
-			</defs>
-		</svg>
-
 
 		<script src="./src/js/asciiShift.js"></script>
         <script src="./src/js/index.js"></script>

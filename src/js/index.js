@@ -461,6 +461,19 @@ document.addEventListener("pointerdown", () => {
 	tabNavigationMode = false;
 });
 
+let restoreSnapTimer = null;
+
+function turnOffSnapTemp() {
+	const htmlElement = document.querySelector("html");
+	htmlElement.style.scrollSnapType = "none";
+
+	clearTimeout(restoreSnapTimer);
+
+	restoreSnapTimer = setTimeout(() => {
+		htmlElement.style.scrollSnapType = "y mandatory"; 
+	}, 1500);
+}
+
 navAnchorLinks.forEach((link) => {
 
 	const id = link.getAttribute("href").slice(1);
@@ -471,8 +484,22 @@ navAnchorLinks.forEach((link) => {
 	sectionById.set(id, target);
 	linkById.set(id, link);
 
-	link.addEventListener("focus", () => {
+	link.addEventListener("focus", (e) => {
+		e.preventDefault()
 		if (!tabNavigationMode) return;
+
+		turnOffSnapTemp()
+
+		target.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	});
+
+	link.addEventListener("click", (e) => {
+		e.preventDefault()
+		
+		turnOffSnapTemp()
 
 		target.scrollIntoView({
 			behavior: "smooth",
@@ -482,7 +509,7 @@ navAnchorLinks.forEach((link) => {
 });
 
 // -----------------------------------------
-//  Active Tabs and Snapping  --------------
+//  Active Tabs ----------------------------
 // -----------------------------------------
 
 let lastActiveId = null;
@@ -511,3 +538,19 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 sectionById.forEach((section) => sectionObserver.observe(section));
 
+
+// -------------------------------------------------------------------
+// ------------------- Light Mode Adjustments ------------------------
+// -------------------------------------------------------------------
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+function updatePfp() {
+	const pfp = document.getElementById("pfp");
+
+    pfp.src = prefersDark.matches
+        ? "./src/assets/ascii-pfpDarkMode.svg"
+        : "./src/assets/ascii-pfpLightMode.svg";
+};
+
+updatePfp();
+prefersDark.addEventListener("change", updatePfp);
