@@ -7,9 +7,27 @@
 	padding: 1.25em;
 }
 
+.projects-section-main-project{
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+	grid-template-rows: auto 1fr auto;
+	align-items: stretch;
+	grid-template-areas:
+		"desc prev"
+		"desc stck"
+		"link link";
+}
+
 .project-name-text-heading{
 	font-size: clamp(0.3rem, 0.75vw, 0.7rem);
 	overflow: hidden;
+}
+
+.projects-section-main-project-desc{
+	grid-area: desc;
+	padding: 1.25rem;
+	position: relative;
 }
 
 .projects-section-project-name-container{
@@ -25,4 +43,87 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+.projects-section-main-project-preview-container{
+	position: relative;
+  	grid-area: prev;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+}
+
+.projects-section-main-project-preview{
+	width: 100%;
+	min-width: 0;
+	height: auto;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	filter: sepia(100%) brightness(75%) hue-rotate(80deg) saturate(130%);
+	z-index: -2;
+	position: relative;
+	user-select: none;
+}
+
+.projects-section-main-project-stack-container{
+	grid-area: stck;
+	position: relative;
+	min-height: 0; 
+	height: 100%;
+}
+
+.projects-section-main-project-links-container{
+	grid-area: link;
+}
+
+.projects-section-main-project-links-list{
+	list-style: none;
+	padding: none;
+	display: flex;
+	gap: 0.75rem;
+}
+
+.projects-section-main-project-link {
+	color: var(--mode-opposite-color);
+	text-decoration: none;
+	font-weight: 700;
+	display: block;
+	padding: 0.75rem 1.25rem;
+	cursor: pointer;
+	position: relative;
+}
+
+.projects-section-main-project-link:hover::before,
+.projects-section-main-project-link:focus::before{
+	content:"< ";
+	position: absolute;
+	left: 0;
+	margin-left: 10%;
+	margin-top: 0.05rem;
+}
+
+.projects-section-main-project-link:hover::after,
+.projects-section-main-project-link:focus::after{
+	content:" >";
+	position: absolute;
+	right: 0;
+	margin-right: 10%;
+	margin-top: 0.05rem;
+}
+
+.projects-section-main-project-link:hover,
+.projects-section-main-project-link:focus{
+	background-color: var(--mode-opposite-color);
+	color: var(--mode-color);
+	text-shadow: var(--colored-shadow-opposite-mode);
+}
+
+.projects-section-main-project-links-list-item{
+	flex-grow: 1;
+	position: relative;
+	text-align: center;
+}
+
+.projects-section-main-project-links-list-item.flex-grow-bigger{
+	flex-grow: 2;
 }
