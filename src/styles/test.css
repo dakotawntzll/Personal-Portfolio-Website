@@ -1,1 +1,28 @@
+.projects-section{
+	font-size: 1rem;
+	line-height: 1.5;
+}
 
+.projects-inner-section-container{
+	padding: 1.25em;
+}
+
+.project-name-text-heading{
+	font-size: clamp(0.3rem, 0.75vw, 0.7rem);
+	overflow: hidden;
+}
+
+.projects-section-project-name-container{
+	display: flex;
+	position: relative;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 -1.25rem 1.25rem;
+	padding-bottom: 1rem;
+}
+
+.projects-section-main-project-desc-text-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

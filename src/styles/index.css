@@ -310,6 +310,7 @@ body {
 
 .bio-section-text-heading{
 	font-size: clamp(0.6rem, 1.8vw, 1rem);
+	overflow: hidden;
 }
 
 .skills-section-heading,
@@ -702,31 +703,14 @@ main {
   	animation: fade 2s forwards;
 	animation-delay: 1s;
 }
+
 /* ================================					
-		About Me Section
+		General Section Containers
 ================================*/
 
-/* Padding Top/Bottom */
-.skills-section-list,
-.contact-section-list,
-.bio-section{
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-}
-
-/* Padding sides */
-.bio-section,
-.skills-section-heading,
-.contact-section-heading,
-.skills-section-list,
-.contact-section-list{
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-
-.about-me-section{
-	/* box-shadow: var(--colored-shadow-mode); */
-	padding: 1.25em;
+.about-me-section,
+.projects-section{
+	padding: 1.25rem;
 	font-size: 0.85rem;
 	line-height: 1.75;
 	display: flex;
@@ -741,12 +725,83 @@ main {
 	scroll-margin-top: 6rem; /* unsure about this */
 }
 
-.section-container{
+.about-me-inner-section-container,
+.projects-inner-section-container{
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
+}
+
+
+/* Borders */
+
+.about-me-section::after,
+.about-me-inner-section-container::after,
+.skills-section-heading::after,
+.contact-section-heading::after,
+.about-me-inner-section-container-lower-half::after,
+.skills-section::after,
+.contact-section::after,
+.projects-section::after,
+.projects-inner-section-container::after,
+.projects-section-project-name-container::after{
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: auto;
+	height: auto;
+	z-index: -1;
+	pointer-events: none;
+	filter: var(--filter-colored-shadow-mode)
+}
+
+.about-me-section::after,
+.projects-section::after{
+	border: 2px solid var(--mode-opposite-color);
+}
+.about-me-inner-section-container::after,
+.projects-inner-section-container::after{
+	border: 2px dashed var(--mode-opposite-color);
+}
+.skills-section-heading::after,
+.contact-section-heading::after,
+.projects-section-project-name-container::after{
+	border-bottom: 2px dashed var(--mode-opposite-color);
+}
+.about-me-inner-section-container-lower-half::after{
+	border-top: 2px dashed var(--mode-opposite-color);
+}
+.skills-section::after,
+.contact-section::after{
+	border-left: none;
+}
+.contact-section::after{
+	border-top: 2px dashed var(--mode-opposite-color);
+}
+
+
+/* ================================					
+		About Me Section
+================================*/
+
+/* Padding Top/Bottom */
+.skills-section-list,
+.contact-section-list,
+.bio-section{
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+}
+
+/* Padding sides */
+.bio-section,
+.skills-section-heading,
+.contact-section-heading,
+.skills-section-list,
+.contact-section-list{
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
 }
 
 .bio-section{
@@ -767,7 +822,7 @@ main {
 	margin: 1em 0 0;
 }
 
-.section-container-lower-half{
+.about-me-inner-section-container-lower-half{
 	height: auto;
 	display: flex;
 	flex-direction: column;
@@ -812,49 +867,6 @@ main {
 .contact-section-list-item::selection {
   background: transparent; /* this fixes weird selection issue where extra space was selected */
 }
-
-
-/* Borders */
-
-.about-me-section::after,
-.section-container::after,
-.skills-section-heading::after,
-.contact-section-heading::after,
-.section-container-lower-half::after,
-.skills-section::after,
-.contact-section::after{
-	content: "";
-	position: absolute;
-	inset: 0;
-	width: auto;
-	height: auto;
-	z-index: -1;
-	pointer-events: none;
-	filter: var(--filter-colored-shadow-mode)
-}
-
-
-.about-me-section::after{
-	border: 2px solid var(--mode-opposite-color);
-}
-.section-container::after{
-	border: 2px dashed var(--mode-opposite-color);
-}
-.skills-section-heading::after,
-.contact-section-heading::after{
-	border-bottom: 2px dashed var(--mode-opposite-color);
-}
-.section-container-lower-half::after{
-	border-top: 2px dashed var(--mode-opposite-color);
-}
-.skills-section::after,
-.contact-section::after{
-	border-left: none;
-}
-.contact-section::after{
-	border-top: 2px dashed var(--mode-opposite-color);
-}
-
 
 /* ================================					
 		Footer
@@ -927,7 +939,8 @@ footer{
 ================================*/
 
 .hero,
-.about-me-section{
+.about-me-section,
+.projects-section{
 	scroll-snap-align: start;
 	scroll-snap-stop: normal; 
 	/* scroll-margin-top: 3rem; */
@@ -1056,7 +1069,6 @@ footer{
 
 	.about-me-section{
 		height: clamp(32rem, 75vh, 100rem);
-		/* margin: 0 auto 7vh; */
 		font-size: 1rem;
 		line-height: 1.5;
 	}	
@@ -1091,7 +1103,7 @@ footer{
 		font-size: clamp(0.6rem, 1.65vw, 1.2rem);
 	}
 
-	.section-container-lower-half{
+	.about-me-inner-section-container-lower-half{
 		height: 40%;
 		flex-direction: row;
 	}
