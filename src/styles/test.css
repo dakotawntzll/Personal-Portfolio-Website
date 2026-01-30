@@ -10,17 +10,17 @@
 .projects-section-main-project{
 	display: grid;
 	gap: 1rem;
-	grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+	grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
 	grid-template-rows: auto 1fr auto;
 	align-items: stretch;
 	grid-template-areas:
 		"desc prev"
 		"desc stck"
-		"link link";
+		"desc link";
 }
 
 .project-name-text-heading{
-	font-size: clamp(0.3rem, 0.75vw, 0.7rem);
+	font-size: clamp(0.4rem, 0.75vw, 1rem);
 	overflow: hidden;
 }
 
@@ -87,7 +87,10 @@
 	color: var(--mode-opposite-color);
 	text-decoration: none;
 	font-weight: 700;
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100%;
 	padding: 0.75rem 1.25rem;
 	cursor: pointer;
 	position: relative;
@@ -126,4 +129,66 @@
 
 .projects-section-main-project-links-list-item.flex-grow-bigger{
 	flex-grow: 2;
+}
+
+.projects-section-main-project-stack-heading{
+	position: relative;
+	font-weight: 700;
+	padding: 1.25rem 
+}
+
+.projects-section-main-project-stack-list{
+	padding: 1.25rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(19ch, 1fr));
+	/* white-space: nowrap; */
+}
+
+.projects-section-main-project-stack-list-item{
+	position: relative;
+	list-style-position: inside;
+	list-style: none;
+	min-width: 0;
+  	white-space: nowrap;
+	overflow-wrap: anywhere;
+}
+
+.projects-section-main-project-stack-list-item::before{
+	content: "▪";
+}
+
+.projects-section-main-project-stack-list-item::selection{
+  	background: transparent; /* this fixes weird selection issue where extra space was selected */
+}
+
+.projects-section-main-project-stack-tech{
+	color: inherit;
+	font-weight: 400;
+	text-decoration: none;
+	background: inherit;
+	padding: 0.25em calc(1ch + 0.5em);
+	margin: -0.25em -0.5em;
+}
+
+
+@media (max-width: 45rem) {
+
+	.projects-section-main-project{
+		display: grid;
+		gap: 1rem;
+
+		align-items: stretch;
+		grid-template-areas:
+			"prev"
+			"desc"
+			"stck"
+			"link";
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+	}
+
+	.projects-section{
+		font-size: 0.85rem;
+		line-height: 1.75;
+	}
 }

@@ -321,7 +321,7 @@ body {
 	padding-bottom: 0.25rem;
 	/* border-bottom: 2px dashed var(--mode-opposite-color); */
 }
-
+ 
 .contact-section-link,
 .skills-section-skill{
 	color: inherit;
@@ -750,7 +750,8 @@ main {
 .projects-section-project-name-container::after,
 .projects-section-main-project-stack-container::after,
 .projects-section-main-project-links-list-item::after,
-.projects-section-main-project-preview-container::after{
+.projects-section-main-project-preview-container::after,
+.projects-section-main-project-stack-heading::after{
 	content: "";
 	position: absolute;
 	inset: 0;
@@ -775,7 +776,8 @@ main {
 }
 .skills-section-heading::after,
 .contact-section-heading::after,
-.projects-section-project-name-container::after{
+.projects-section-project-name-container::after,
+.projects-section-main-project-stack-heading::after{
 	border-bottom: 2px dashed var(--mode-opposite-color);
 }
 .about-me-inner-section-container-lower-half::after{
@@ -863,8 +865,8 @@ main {
 .contact-section-list{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	white-space: nowrap;
 	gap: 1ch;
+	white-space: nowrap;
 }
 
 .skills-section-list{
@@ -875,7 +877,7 @@ main {
 
 .skills-section-list-item::selection,
 .contact-section-list-item::selection {
-  background: transparent; /* this fixes weird selection issue where extra space was selected */
+	background: transparent; /* this fixes weird selection issue where extra space was selected */
 }
 
 /* ================================					
