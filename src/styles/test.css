@@ -20,7 +20,7 @@
 }
 
 .project-name-text-heading{
-	font-size: clamp(0.4rem, 0.75vw, 1rem);
+	font-size: clamp(0.4rem, 0.75vw, 0.75rem);
 	overflow: hidden;
 }
 
@@ -35,8 +35,9 @@
 	position: relative;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-items: center;
 	margin: 0 -1.25rem 1.25rem;
-	padding-bottom: 1rem;
+	padding: 0 1.25rem 1rem; /* note for myself: Padding on bottom is lower to compensate for vertical overflow of text art */
 }
 
 .projects-section-main-project-desc-text-container{
