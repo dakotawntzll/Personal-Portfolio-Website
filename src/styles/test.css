@@ -5,6 +5,9 @@
 
 .projects-inner-section-container{
 	padding: 1.25em;
+	display: flex;
+	flex-direction: column;
+	gap: 5rem; 
 }
 
 .projects-section-main-project{
@@ -92,9 +95,10 @@
 	justify-content: center;
 	align-items: center;
 	min-height: 100%;
-	padding: 0.75rem 1.25rem;
+	padding: 0.8rem 1.25rem;
 	cursor: pointer;
 	position: relative;
+	line-height: 1;
 }
 
 .projects-section-main-project-link:hover::before,
@@ -171,14 +175,47 @@
 	margin: -0.25em -0.5em;
 }
 
+.projects-section-project{
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	width: 100%;
+}
+
+.projects-section-project-desc{
+	padding: 1.25rem;
+	position: relative;
+	flex: 2;
+}
+
+.projects-section-project-desc-heading{
+	position: relative;
+	font-weight: 700;
+	padding: 1.25rem;
+	margin: -1.25rem;
+	margin-bottom: 0;
+}
+
+.projects-section-project-desc-text{
+	padding-top: 1.25rem;
+}
+
+.projects-section-project-preview-container{
+	position: relative;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	min-width: 17rem;
+	min-height: 100%;
+	flex: 1;
+}
+
+.projects-section-project-preview-container.reverse-order{
+	order:-1;
+}
 
 @media (max-width: 45rem) {
 
 	.projects-section-main-project{
-		display: grid;
-		gap: 1rem;
-
-		align-items: stretch;
 		grid-template-areas:
 			"prev"
 			"desc"

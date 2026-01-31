@@ -751,7 +751,11 @@ main {
 .projects-section-main-project-stack-container::after,
 .projects-section-main-project-links-list-item::after,
 .projects-section-main-project-preview-container::after,
-.projects-section-main-project-stack-heading::after{
+.projects-section-main-project-stack-heading::after,
+.projects-section-project-desc::after,
+.projects-section-project-desc-heading::after,
+.projects-section-project-preview-container::after
+{
 	content: "";
 	position: absolute;
 	inset: 0;
@@ -767,7 +771,9 @@ main {
 .projects-section-main-project-desc::after,
 .projects-section-main-project-stack-container::after,
 .projects-section-main-project-links-list-item::after,
-.projects-section-main-project-preview-container::after{
+.projects-section-main-project-preview-container::after,
+.projects-section-project-desc::after,
+.projects-section-project-preview-container::after{
 	border: 2px solid var(--mode-opposite-color);
 }
 .about-me-inner-section-container::after,
@@ -777,7 +783,8 @@ main {
 .skills-section-heading::after,
 .contact-section-heading::after,
 .projects-section-project-name-container::after,
-.projects-section-main-project-stack-heading::after{
+.projects-section-main-project-stack-heading::after,
+.projects-section-project-desc-heading::after{
 	border-bottom: 2px dashed var(--mode-opposite-color);
 }
 .about-me-inner-section-container-lower-half::after{
