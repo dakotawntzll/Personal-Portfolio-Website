@@ -754,7 +754,8 @@ main {
 .projects-section-main-project-stack-heading::after,
 .projects-section-project-desc::after,
 .projects-section-project-desc-heading::after,
-.projects-section-project-preview-container::after
+.projects-section-project-preview-container::after,
+.projects-section-secondary-projects-container::after
 {
 	content: "";
 	position: absolute;
@@ -763,7 +764,7 @@ main {
 	height: auto;
 	z-index: -1;
 	pointer-events: none;
-	filter: var(--filter-colored-shadow-mode)
+	filter: var(--filter-colored-shadow-mode);
 }
 
 .about-me-section::after,
@@ -787,7 +788,8 @@ main {
 .projects-section-project-desc-heading::after{
 	border-bottom: 2px dashed var(--mode-opposite-color);
 }
-.about-me-inner-section-container-lower-half::after{
+.about-me-inner-section-container-lower-half::after,
+.projects-section-secondary-projects-container::after{
 	border-top: 2px dashed var(--mode-opposite-color);
 }
 .skills-section::after,

@@ -7,7 +7,7 @@
 	padding: 1.25em;
 	display: flex;
 	flex-direction: column;
-	gap: 5rem; 
+	gap: 1.25rem; 
 }
 
 .projects-section-main-project{
@@ -23,24 +23,24 @@
 }
 
 .project-name-text-heading{
-	font-size: clamp(0.4rem, 0.75vw, 0.75rem);
+	font-size: clamp(0.4rem, 0.775vw, 0.755rem);
 	overflow: hidden;
-}
-
-.projects-section-main-project-desc{
-	grid-area: desc;
-	padding: 1.25rem;
-	position: relative;
 }
 
 .projects-section-project-name-container{
 	display: flex;
 	position: relative;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	margin: 0 -1.25rem 1.25rem;
 	padding: 0 1.25rem 1rem; /* note for myself: Padding on bottom is lower to compensate for vertical overflow of text art */
+}
+
+.projects-section-main-project-desc{
+	grid-area: desc;
+	padding: 1.25rem;
+	position: relative;
 }
 
 .projects-section-main-project-desc-text-container{
@@ -175,15 +175,47 @@
 	margin: -0.25em -0.5em;
 }
 
+
+
+
+
+
+.projects-section-secondary-projects-container{
+	position: relative;
+	padding-top: 1.25rem;
+	margin: 0 -1.25rem;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+
+	height: auto;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: 1rem;
+	transition: grid-template-rows 80ms ease;
+}
+
 .projects-section-project{
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 	width: 100%;
+	font-size: clamp(0.75rem, 1.5vw, 1rem);
+	min-height: 0;
+	overflow: hidden;
+}
+
+.projects-section-secondary-projects-container:has(.projects-section-project:nth-child(1):hover){
+  	grid-template-rows: 1.4fr 0.8fr 0.8fr;
+}
+.projects-section-secondary-projects-container:has(.projects-section-project:nth-child(2):hover){
+  	grid-template-rows: 0.8fr 1.4fr 0.8fr;
+}
+.projects-section-secondary-projects-container:has(.projects-section-project:nth-child(3):hover){
+  	grid-template-rows: 0.8fr 0.8fr 1.4fr;
 }
 
 .projects-section-project-desc{
-	padding: 1.25rem;
+	padding: 1.25em;
 	position: relative;
 	flex: 2;
 }
@@ -191,26 +223,25 @@
 .projects-section-project-desc-heading{
 	position: relative;
 	font-weight: 700;
-	padding: 1.25rem;
-	margin: -1.25rem;
+	padding: 1.25em;
+	margin: -1.25em;
 	margin-bottom: 0;
 }
 
 .projects-section-project-desc-text{
-	padding-top: 1.25rem;
+	padding-top: 1.25em;
 }
-
 .projects-section-project-preview-container{
 	position: relative;
-	aspect-ratio: 4 / 3;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
-	min-width: 17rem;
+	min-width: 20em;
 	min-height: 100%;
 	flex: 1;
 }
 
 .projects-section-project-preview-container.reverse-order{
-	order:-1;
+	order: -1;
 }
 
 @media (max-width: 45rem) {
