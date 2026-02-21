@@ -160,6 +160,7 @@
 			drop-shadow(0 0 6px rgba(46, 66, 45, 0.3))
 			drop-shadow(0 0 8px rgba(40, 93, 22, 0.3));
 
+
 		--pfp-shadow:
 			drop-shadow(0 0 1px rgba(0, 0, 0, 0.5)) 
 			drop-shadow(0 0 2px rgba(30, 36, 28, 0.4))
@@ -755,7 +756,7 @@ main {
 .projects-section-project-desc::after,
 .projects-section-project-desc-heading::after,
 .projects-section-project-preview-container::after,
-.projects-section-secondary-projects-container::after
+.secondary-projects-heading::after
 {
 	content: "";
 	position: absolute;
@@ -785,11 +786,12 @@ main {
 .contact-section-heading::after,
 .projects-section-project-name-container::after,
 .projects-section-main-project-stack-heading::after,
-.projects-section-project-desc-heading::after{
+.projects-section-project-desc-heading::after,
+.secondary-projects-heading::after{
 	border-bottom: 2px dashed var(--mode-opposite-color);
 }
 .about-me-inner-section-container-lower-half::after,
-.projects-section-secondary-projects-container::after{
+.secondary-projects-heading::after{
 	border-top: 2px dashed var(--mode-opposite-color);
 }
 .skills-section::after,

@@ -552,5 +552,18 @@ function updatePfp() {
         : "./src/assets/ascii-pfpLightMode.svg";
 };
 
-updatePfp();
-prefersDark.addEventListener("change", updatePfp);
+function updateIcons() {
+	const githubIcon = document.getElementById("github-link-icon");
+
+	githubIcon.src = prefersDark.matches
+        ? "./src/assets/icons/githubIconPixelatedDarkMode.png"
+        : "./src/assets/icons/githubIconPixelatedLightMode.png";
+}
+
+function colorSchemeUpdates() {
+	updatePfp();
+	updateIcons();
+}
+
+colorSchemeUpdates();
+prefersDark.addEventListener("change", colorSchemeUpdates);
