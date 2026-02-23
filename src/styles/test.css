@@ -297,7 +297,7 @@
 .github-link-icon{
 	/* height: 1.35em; */
 	height: clamp(1rem, 1.75vw, 1.35rem);
-	width: auto;
+	width: clamp(1rem, 1.75vw, 1.35rem);
 	filter: var(--filter-colored-shadow-mode);
 	image-rendering: crisp-edges;
 	shape-rendering: crispEdges;
@@ -305,7 +305,7 @@
 
 .deploy-link-icon{
 	height: 1.35em;
-	width: auto;
+	width: 1.35em;
 	filter: var(--filter-colored-shadow-mode);
 	image-rendering: crisp-edges;
 	shape-rendering: crispEdges;
