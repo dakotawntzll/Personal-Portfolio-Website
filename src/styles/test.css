@@ -1,6 +1,6 @@
 .projects-section{
-	font-size: 1rem;
-	line-height: 1.5;
+	font-size: 0.85rem;
+	line-height: 1.75;
 }
 
 .projects-inner-section-container{
@@ -13,13 +13,14 @@
 .projects-section-main-project{
 	display: grid;
 	gap: 1rem;
-	grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
 	align-items: stretch;
 	grid-template-areas:
-		"desc prev"
-		"desc stck"
-		"desc link";
+			"prev"
+			"desc"
+			"stck"
+			"link";
 }
 
 .project-name-text-heading{
@@ -206,12 +207,13 @@
 
 .projects-section-project{
 	display: flex;
-	flex-direction: row;
-	gap: 1rem;
+	flex-direction: column;
+	gap: 0;
 	width: 100%;
 	font-size: clamp(0.75rem, 1.5vw, 1rem);
 	min-height: 0;
 	overflow: hidden;
+	order: reverse;
 }
 
 .projects-section-project-desc{
@@ -235,6 +237,7 @@
 .projects-section-project-desc-text{
 	padding-top: 1.25em;
 }
+
 .projects-section-project-preview-container{
 	position: relative;
 	aspect-ratio: 16 / 9;
@@ -243,13 +246,16 @@
 	min-height: 100%;
 	flex: 1;
 	display: flex; /* Need this to prevent the link from preventing the preview to fill container */
+	order: -1;
 }
 
 .projects-section-project-preview-container.reverse-order{
 	order: -1;
 }
 
-
+.projects-section-project-preview-container::after{
+	border-bottom: none;
+}
 
 .projects-section-project-link{
 	display: flex;
@@ -363,38 +369,35 @@
 	content: "▪";
 }
 
-@media (max-width: 45rem) {
+@media (min-width: 45rem) {
+
 
 	.projects-section-main-project{
+		grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+		grid-template-rows: auto 1fr auto;
 		grid-template-areas:
-			"prev"
-			"desc"
-			"stck"
-			"link";
-		grid-template-columns: 1fr;
-		grid-template-rows: auto;
+			"desc prev"
+			"desc stck"
+			"desc link";
 	}
 
 	.projects-section{
-		font-size: 0.85rem;
-		line-height: 1.75;
+		font-size: 1rem;
+		line-height: 1.5;
 	}
-
+	
 	.projects-section-project{
-		flex-direction: column;
-		gap: 0;
-		order: reverse;
+		flex-direction: row;
+		gap: 1rem;
+		order: inherit;
 	}
-
 
 	.projects-section-project-preview-container{
-		order: -1;
+		order: inherit;
 	}
 
 	.projects-section-project-preview-container::after{
-		border-bottom: none;
+		border-bottom: 2px solid var(--mode-opposite-color);
 	}
-
-
 
 }
