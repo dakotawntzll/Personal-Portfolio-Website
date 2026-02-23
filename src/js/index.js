@@ -553,11 +553,22 @@ function updatePfp() {
 };
 
 function updateIcons() {
-	const githubIcon = document.getElementById("github-link-icon");
+	const githubIcons = document.querySelectorAll(".github-link-icon");
+	const deployLinkIcons = document.querySelectorAll(".deploy-link-icon");
 
-	githubIcon.src = prefersDark.matches
-        ? "./src/assets/icons/githubIconPixelatedDarkMode.png"
-        : "./src/assets/icons/githubIconPixelatedLightMode.png";
+
+	githubIcons.forEach(githubIcon => {
+		githubIcon.src = prefersDark.matches
+			? "./src/assets/icons/githubIconPixelatedDarkMode.svg"
+			: "./src/assets/icons/githubIconPixelatedLightMode.svg";
+	})
+
+	deployLinkIcons.forEach(deployLinkIcon => {
+		deployLinkIcon.src = prefersDark.matches
+			? "./src/assets/icons/deployLinkDark.svg" 
+			: "./src/assets/icons/deployLinkLight.svg";
+	})
+
 }
 
 function colorSchemeUpdates() {

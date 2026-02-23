@@ -216,14 +216,18 @@
 
 .projects-section-project-desc{
 	padding: 1.25em;
+	padding-bottom: calc(1.25em + 0.75rem);
 	position: relative;
 	flex: 2;
 }
 
 .projects-section-project-desc-heading{
+	display: flex;
+	align-items: center;
 	position: relative;
 	font-weight: 700;
-	padding: 1.25em;
+	padding: 1.25em; 
+	padding-top: 1.4em; /* this is magic numbered because this font looks slightly off vertically and it's noticeable without this here */
 	margin: -1.25em;
 	margin-bottom: 0;
 }
@@ -254,6 +258,8 @@
 	color: var(--mode-opposite-color);
 	text-decoration: none;
 	position: absolute;
+	align-items: center;
+	justify-content: center;
 }
 
 .projects-section-project-link-text{
@@ -264,13 +270,15 @@
 
 	margin-right: -3em; /* in case I forget, this is to make sure the ascii hover activate even when the icon is being hovered */
 	padding-right: 3em;
+
+	padding-top: 0.17em; /* this is magic numbered because this font looks slightly off vertically and it's noticeable without this here */
 }
 
 .projects-section-project-link.repo-link{
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: 1.3em 1.25em;
+	padding: 1.2em 1.25em;
 }
 
 .projects-section-project-link.deploy-link{
@@ -281,9 +289,20 @@
 }
 
 .github-link-icon{
+	/* height: 1.35em; */
+	height: clamp(1rem, 1.75vw, 1.35rem);
+	width: auto;
+	filter: var(--filter-colored-shadow-mode);
+	image-rendering: crisp-edges;
+	shape-rendering: crispEdges;
+}
+
+.deploy-link-icon{
 	height: 1.35em;
 	width: auto;
 	filter: var(--filter-colored-shadow-mode);
+	image-rendering: crisp-edges;
+	shape-rendering: crispEdges;
 }
 
 .projects-section-project-link:hover,
@@ -329,6 +348,20 @@
 }
 
 
+.projects-section-project-stack-list{
+	display: flex;
+	gap: 1.25em;
+	font-size: clamp(0.6rem, 1vw, 0.8rem);
+	position: absolute;
+	list-style: none;
+	bottom: 0;
+	right: 0;
+	padding: 0.75rem 1.25rem 0.55rem;
+}
+
+.projects-section-project-stack-list-item::before{
+	content: "▪";
+}
 
 @media (max-width: 45rem) {
 
@@ -346,4 +379,22 @@
 		font-size: 0.85rem;
 		line-height: 1.75;
 	}
+
+	.projects-section-project{
+		flex-direction: column;
+		gap: 0;
+		order: reverse;
+	}
+
+
+	.projects-section-project-preview-container{
+		order: -1;
+	}
+
+	.projects-section-project-preview-container::after{
+		border-bottom: none;
+	}
+
+
+
 }

@@ -108,7 +108,7 @@
 		--primary: #0f421e;
 		--primary-heavy: #92d896;
 		--background-color: rgb(224, 232, 220);
-		--background-color-low-opacity: rgba(224, 232, 220, 0.110);
+		--background-color-low-opacity: rgba(207, 219, 208, 0.11);
 		--scrollbar-colors: var(--primary) var(--background-color-low-opacity);
 		--nav-link-color: black;
 		--hero-filter: sepia(75%) hue-rotate(75deg) brightness(130%) contrast(110%) saturate(130%) invert(100%) hue-rotate(180deg);
@@ -438,7 +438,7 @@ main {
 	height: 1.45rem;
 	width: 1.45rem;
 	object-fit: cover;
-	fill: var(--mode-opposite-color)
+	fill: var(--mode-opposite-color);
 }
 
 .logo {
