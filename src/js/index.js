@@ -252,6 +252,7 @@ fadeEls.forEach((el) => fadeObserver.observe(el));
 const socialLinksDropdownContainer = document.querySelector(".social-links-dropdown-container");
 const socialLinksDropdownContainerBtn = document.querySelector(".social-links-dropdown-container-btn");
 const socialMenu = document.querySelector("#social-menu");
+const logo = document.querySelector(".logo")
 let socialLinksDropdownContainerOpen = false;
 let suppressNextClickToggle = false;
 
@@ -264,6 +265,10 @@ function setMenu(state) {
 	socialLinksDropdownContainerOpen = state;
 
 	// console.log(socialLinksDropdownContainerOpen)
+
+	logo.style.cssText = state 
+		? `filter: invert(100%) hue-rotate(180deg) saturate(150%);`
+		: `filter: none;`
 }
 
 socialLinksDropdownContainerBtn.addEventListener("click", () => {
@@ -312,6 +317,7 @@ document.addEventListener("keydown", (e) => {
 const navLinksDropdownContainer = document.querySelector(".nav-links-dropdown-container");
 const navLinksDropdownContainerBtn = document.querySelector(".nav-links-dropdown-container-btn");
 const navMenu = document.querySelector("#nav-menu");
+const navIcon = document.querySelector(".nav-icon")
 let navLinksDropdownContainerOpen = false;
 let suppressNextNavClickToggle = false;
 
@@ -323,7 +329,12 @@ function setNavMenu(state) {
 	navMenu.hidden = !state;
 	navLinksDropdownContainerOpen = state;
 
-	// console.log(navLinksDropdownContainerOpen)
+	navIcon.style.cssText = state 
+		? `stroke: var(--mode-opposite-color);
+		   stroke-width: 2px;
+	       fill: var(--mode-color);`
+		: `stroke: none;
+	       fill: var(--mode-opposite-color);`
 }
 
 navLinksDropdownContainerBtn.addEventListener("click", () => {

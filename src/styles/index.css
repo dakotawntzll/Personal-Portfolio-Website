@@ -493,17 +493,17 @@ main {
 	text-decoration: none;
 }
 
-.social-links-dropdown-container-btn:focus > img,
+/* .social-links-dropdown-container-btn:focus > img,
 .social-links-dropdown-container-btn:hover > img{
 	filter: invert(100%) hue-rotate(180deg) saturate(150%);
-}
+} */
 
-.nav-links-dropdown-container-btn:focus > .nav-icon,
+/* .nav-links-dropdown-container-btn:focus > .nav-icon,
 .nav-links-dropdown-container-btn:hover > .nav-icon{
 	stroke: var(--mode-opposite-color);
 	stroke-width: 2px;
 	fill: var(--mode-color);
-}
+} */
 
 .social-links-dropdown-container-btn .logo {
 	animation: none;
