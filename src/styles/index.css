@@ -203,7 +203,7 @@ html {
 	scrollbar-color: var(--scrollbar-colors);
 	scroll-behavior: smooth;
 
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: none;
 }
 
 body {
@@ -1249,7 +1249,7 @@ main {
 /* ================================					
 		Footer
 ================================*/
-footer{
+.footer{
 	background: var(--mode-color);
 	background: var(--header-gradient);
 	color: var(--mode-opposite-color);
@@ -1318,7 +1318,13 @@ footer{
 
 .hero,
 .about-me-section,
-.projects-section{
+.skills-section,
+.contact-section,
+.projects-section,
+.projects-section-main-project,
+.projects-section-secondary-projects-container,
+.footer
+{
 	scroll-snap-align: start;
 	scroll-snap-stop: normal; 
 	/* scroll-margin-top: 3rem; */
@@ -1338,7 +1344,7 @@ footer{
 @media (min-width: 45rem) {
 
 	html {
-		scroll-snap-type: y mandatory;
+		scroll-snap-type: none;
 	}
 
 	.container {
@@ -1450,6 +1456,11 @@ footer{
 		font-size: 1rem;
 		line-height: 1.5;
 	}	
+
+	.skills-section,
+	.contact-section{
+		scroll-snap-align: none;
+	}
 
 	.bio-section{
 		flex-direction: row;
