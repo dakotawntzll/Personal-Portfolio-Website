@@ -422,12 +422,16 @@ let ticking = false;
 
 // Trying to make it so on mobile the scrolling isn't janky
 let stableVH = window.innerHeight;
+let maxScroll = 1;
+
+function findMaxScroll(){
+	maxScroll = (document.documentElement.scrollHeight - stableVH) || 1;
+ 	if (maxScroll < 1) maxScroll = 1;
+}
 
 const updateLogoRotation = () => {
 	const scrollTop =
 		window.scrollY || document.documentElement.scrollTop;
-	const maxScroll =
-		document.documentElement.scrollHeight - stableVH || 1;
 
 	const progress = scrollTop / maxScroll; // 0 -> 1
 	const turns = 1; // 1 = 360°, 2 = 720°, etc.
@@ -443,11 +447,13 @@ const onScroll = () => {
 	requestAnimationFrame(updateLogoRotation);
 };
 
+findMaxScroll();
 updateLogoRotation(); 
 window.addEventListener("scroll", onScroll, { passive: true });
 
 window.addEventListener("resize", () => {
 	stableVH = window.innerHeight;
+	findMaxScroll();
 	updateLogoRotation();
 });
 
