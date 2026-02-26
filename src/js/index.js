@@ -549,6 +549,50 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 sectionById.forEach((section) => sectionObserver.observe(section));
 
+// -------------------------------------------------------------------
+// ---------------------- Project Previews ---------------------------
+// -------------------------------------------------------------------
+
+function initMainProjectSlideshow() {
+    const container = document.querySelector(
+        ".projects-section-main-project-preview-container"
+    );
+
+    const slides = container.querySelectorAll(".slide");
+    let current = 0;
+
+    setInterval(() => {
+        slides[current].classList.remove("is-active");
+
+        current = (current + 1) % slides.length;
+
+        slides[current].classList.add("is-active");
+    }, 5000); 
+}
+
+initMainProjectSlideshow();
+
+
+function initSecondaryProjectSlideshow() {
+    const containers = document.querySelectorAll(
+        ".projects-section-project-preview-container"
+    );
+
+	containers.forEach(container =>{
+		const slides = container.querySelectorAll(".slide");
+		let current = 0;
+	
+		setInterval(() => {
+			slides[current].classList.remove("is-active");
+	
+			current = (current + 1) % slides.length;
+	
+			slides[current].classList.add("is-active");
+		}, 5000); 
+	})
+}
+
+initSecondaryProjectSlideshow()
 
 // -------------------------------------------------------------------
 // ------------------- Light Mode Adjustments ------------------------
