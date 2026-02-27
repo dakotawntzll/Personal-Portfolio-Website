@@ -413,51 +413,6 @@ syncNavDropdownToViewport();
 // Keep it correct if the user resizes / rotates
 navDesktopMQ.addEventListener("change", syncNavDropdownToViewport);
 
-// -------------------------------------------------------------------
-// ---------------------- Logo Scroll Animation ----------------------
-// -------------------------------------------------------------------
-
-const logoImg = document.querySelector(".logo");
-let ticking = false;
-
-// Trying to make it so on mobile the scrolling isn't janky
-let stableVH = window.innerHeight;
-let maxScroll = 1;
-
-function findMaxScroll(){
-	maxScroll = (document.documentElement.scrollHeight - stableVH) || 1;
- 	if (maxScroll < 1) maxScroll = 1;
-}
-
-const updateLogoRotation = () => {
-	const scrollTop =
-		window.scrollY || document.documentElement.scrollTop;
-
-	const progress = scrollTop / maxScroll; // 0 -> 1
-	const turns = 1; // 1 = 360°, 2 = 720°, etc.
-	const deg = progress * 360 * turns;
-
-	logoImg.style.setProperty("--logo-rot", `${deg}deg`);
-	ticking = false;
-};
-
-const onScroll = () => {
-	if (ticking) return;
-	ticking = true;
-	requestAnimationFrame(updateLogoRotation);
-};
-
-findMaxScroll();
-updateLogoRotation(); 
-window.addEventListener("scroll", onScroll, { passive: true });
-
-window.addEventListener("resize", () => {
-	stableVH = window.innerHeight;
-	findMaxScroll();
-	updateLogoRotation();
-});
-
-
 
 // -------------------------------------------------------------------
 // ------------------- Section Tabbing / Active ----------------------
@@ -639,3 +594,48 @@ function colorSchemeUpdates() {
 
 colorSchemeUpdates();
 prefersDark.addEventListener("change", colorSchemeUpdates);
+
+
+// -------------------------------------------------------------------
+// ---------------------- Logo Scroll Animation ----------------------
+// -------------------------------------------------------------------
+
+const logoImg = document.querySelector(".logo");
+let ticking = false;
+
+// Trying to make it so on mobile the scrolling isn't janky
+let stableVH = window.innerHeight;
+let maxScroll = 1;
+
+function findMaxScroll(){
+	maxScroll = (document.documentElement.scrollHeight - stableVH) || 1;
+ 	if (maxScroll < 1) maxScroll = 1;
+}
+
+const updateLogoRotation = () => {
+	const scrollTop =
+		window.scrollY || document.documentElement.scrollTop;
+
+	const progress = scrollTop / maxScroll; // 0 -> 1
+	const turns = 1; // 1 = 360°, 2 = 720°, etc.
+	const deg = progress * 360 * turns;
+
+	logoImg.style.setProperty("--logo-rot", `${deg}deg`);
+	ticking = false;
+};
+
+const onScroll = () => {
+	if (ticking) return;
+	ticking = true;
+	requestAnimationFrame(updateLogoRotation);
+};
+
+findMaxScroll();
+updateLogoRotation(); 
+window.addEventListener("scroll", onScroll, { passive: true });
+
+window.addEventListener("resize", () => {
+	stableVH = window.innerHeight;
+	findMaxScroll();
+	updateLogoRotation();
+});
